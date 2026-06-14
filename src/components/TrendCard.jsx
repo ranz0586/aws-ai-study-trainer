@@ -3,15 +3,7 @@ export default function TrendCard({
   value
 }) {
   return (
-    <div
-      style={{
-        background: "white",
-        border: "1px solid #e5e7eb",
-        borderRadius: 12,
-        padding: 20,
-        textAlign: "center"
-      }}
-    >
+    <div className="card">
       <h3>
         {title}
       </h3>

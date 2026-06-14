@@ -1,23 +1,24 @@
 import {
   useEffect,
   useMemo
-} from "react";
-
-import {
-  calculateScore,
-  getReadiness
-} from "../utils/examUtils";
-
-import {
-  calculateDomainScores
-} from "../utils/domainScoring";
-
-import {
-  weakTopics
-} from "../utils/weakTopicDetector";
+}
+from "react";
 
 import DomainScoreCard
 from "../components/DomainScoreCard";
+
+import StudyRecommendationCard
+from "../components/StudyRecommendationCard";
+
+import {
+  calculateDomainScores
+}
+from "../utils/domainScoring";
+
+import {
+  generateRemediationPlan
+}
+from "../utils/remediationEngine";
 
 import useExamHistory
 from "../hooks/useExamHistory";
@@ -32,124 +33,99 @@ export default function ResultsPage({
     addAttempt
   } = useExamHistory();
 
-  const hasResults =
-    Boolean(results);
+  const questions =
+    results?.questions ?? [];
 
-  const scoreData =
-    useMemo(() => {
+  const answers =
+    results?.answers ?? {};
 
-      if (!hasResults) {
-        return null;
-      }
+  const correct =
+    questions.filter(
+      (
+        question,
+        index
+      ) =>
+        answers[index] ===
+        question.answer
+    ).length;
 
-      return calculateScore(
-        results.questions,
-        results.answers
-      );
+  const score =
+    questions.length
+      ? Math.round(
+          (
+            correct /
+            questions.length
+          ) * 100
+        )
+      : 0;
 
-    }, [
-      hasResults,
-      results
-    ]);
-
-  const readiness =
-    useMemo(() => {
-
-      if (!scoreData) {
-        return null;
-      }
-
-      return getReadiness(
-        scoreData.percent
-      );
-
-    }, [scoreData]);
+  const passed =
+    score >= 70;
 
   const domainScores =
-    useMemo(() => {
+    useMemo(
+      () =>
+        questions.length
+          ? calculateDomainScores(
+              questions,
+              answers
+            )
+          : {},
+      [
+        questions,
+        answers
+      ]
+    );
 
-      if (!hasResults) {
-        return {};
-      }
+  const incorrectQuestions =
+    useMemo(
+      () =>
+        questions.filter(
+          (
+            question,
+            index
+          ) =>
+            answers[index] !==
+            question.answer
+        ),
+      [
+        questions,
+        answers
+      ]
+    );
 
-      return calculateDomainScores(
-        results.questions,
-        results.answers
-      );
-
-    }, [
-      hasResults,
-      results
-    ]);
-
-  const weak =
-    useMemo(() => {
-
-      if (!hasResults) {
-        return [];
-      }
-
-      return weakTopics(
-        domainScores
-      );
-
-    }, [
-      hasResults,
-      domainScores
-    ]);
+  const remediation =
+    useMemo(
+      () =>
+        generateRemediationPlan(
+          domainScores,
+          incorrectQuestions
+        ),
+      [
+        domainScores,
+        incorrectQuestions
+      ]
+    );
 
   useEffect(() => {
 
-    if (!hasResults) {
-      return;
-    }
-
-    const key =
-      `attempt-${scoreData.percent}-${scoreData.correct}`;
-
-    if (
-      sessionStorage.getItem(
-        key
-      )
-    ) {
-      return;
-    }
+    if (!results) return;
 
     addAttempt({
-
-      score:
-        scoreData.percent,
-
-      readiness,
-
-      weakTopics:
-        weak,
-
+      score,
+      passed,
       domainScores
-
     });
 
-    sessionStorage.setItem(
-      key,
-      "saved"
-    );
+  }, []);
 
-  }, [
-    hasResults,
-    addAttempt,
-    scoreData,
-    readiness,
-    weak,
-    domainScores
-  ]);
-
-  if (!hasResults) {
+  if (!results) {
 
     return (
       <div className="app-container">
 
         <h1>
-          No Results Found
+          No Results Available
         </h1>
 
         <button
@@ -167,34 +143,37 @@ export default function ResultsPage({
   }
 
   return (
+
     <div className="app-container">
 
       <h1>
         Exam Results
       </h1>
 
+      <div className="card">
+
+        <h2>
+          {score}%
+        </h2>
+
+        <p>
+          {correct}
+          {" / "}
+          {questions.length}
+          {" "}
+          Correct
+        </p>
+
+        <h3>
+          {passed
+            ? "✅ PASS"
+            : "❌ FAIL"}
+        </h3>
+
+      </div>
+
       <h2>
-        Overall Score:
-        {" "}
-        {scoreData.percent}%
-      </h2>
-
-      <h3>
-        {readiness}
-      </h3>
-
-      <p>
-        Correct:
-        {" "}
-        {scoreData.correct}
-        {" / "}
-        {scoreData.total}
-      </p>
-
-      <hr />
-
-      <h2>
-        Domain Scores
+        Domain Breakdown
       </h2>
 
       {Object.entries(
@@ -202,12 +181,12 @@ export default function ResultsPage({
       ).map(
         ([
           domain,
-          score
+          value
         ]) => (
           <DomainScoreCard
             key={domain}
             domain={domain}
-            score={score}
+            score={value}
           />
         )
       )}
@@ -215,33 +194,65 @@ export default function ResultsPage({
       <hr />
 
       <h2>
-        Weak Topics
+        Personalized Study Plan
       </h2>
 
-      {weak.length === 0 ? (
-        <p>
-          None 🎉
-        </p>
+      {remediation
+        .recommendations
+        .length === 0 ? (
+
+        <div className="card">
+
+          <h3>
+            🎉 Exam Ready
+          </h3>
+
+          <p>
+            No weak domains
+            detected.
+          </p>
+
+        </div>
+
       ) : (
-        <ul>
-          {weak.map(
-            topic => (
-              <li
-                key={topic}
-              >
-                {topic}
-              </li>
+
+        remediation
+          .recommendations
+          .map(
+            item => (
+              <StudyRecommendationCard
+                key={
+                  item.domain
+                }
+                recommendation={
+                  item
+                }
+              />
             )
-          )}
-        </ul>
+          )
+
       )}
 
+      <div className="card">
+
+        <h3>
+          Retake Questions
+        </h3>
+
+        <p>
+          {
+            remediation
+              .retakeQuestions
+          }
+          {" "}
+          missed questions
+          identified.
+        </p>
+
+      </div>
+
       <div
-        style={{
-          display: "flex",
-          gap: 12,
-          marginTop: 24
-        }}
+        className="exam-actions"
       >
 
         <button
@@ -265,5 +276,7 @@ export default function ResultsPage({
       </div>
 
     </div>
+
   );
+
 }

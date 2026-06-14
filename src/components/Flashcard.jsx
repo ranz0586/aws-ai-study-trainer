@@ -3,55 +3,47 @@ import { useState } from "react";
 export default function Flashcard({
   card
 }) {
+
   const [revealed, setRevealed] =
     useState(false);
 
   return (
     <div
+      className="flashcard"
       onClick={() =>
-        setRevealed(!revealed)
+        setRevealed(
+          !revealed
+        )
       }
-      style={{
-        background: "#ffffff",
-        border: "1px solid #e5e7eb",
-        borderRadius: 12,
-        padding: 20,
-        minHeight: 140,
-
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-
-        textAlign: "center",
-
-        cursor: "pointer",
-
-        transition: "0.2s",
-
-        boxShadow:
-          "0 2px 6px rgba(0,0,0,0.05)"
-      }}
     >
+
       {!revealed ? (
+
         <div>
-          <small
-            style={{
-              color: "#6b7280"
-            }}
-          >
+
+          <small className="flashcard-label">
             Question
           </small>
 
           <h3>
             {card.q}
           </h3>
+
+          <p className="flashcard-hint">
+            Click to reveal answer
+          </p>
+
         </div>
+
       ) : (
+
         <div>
+
           <small
-            style={{
-              color: "#16a34a"
-            }}
+            className="
+              flashcard-label
+              flashcard-answer
+            "
           >
             Answer
           </small>
@@ -59,8 +51,48 @@ export default function Flashcard({
           <h3>
             {card.a}
           </h3>
+
+          {card.explanation && (
+            <>
+              <strong>
+                Explanation
+              </strong>
+
+              <p>
+                {card.explanation}
+              </p>
+            </>
+          )}
+
+          {card.example && (
+            <>
+              <strong>
+                Example
+              </strong>
+
+              <p>
+                {card.example}
+              </p>
+            </>
+          )}
+
+          {card.examTip && (
+            <>
+              <strong>
+                Exam Tip
+              </strong>
+
+              <p>
+                {card.examTip}
+              </p>
+            </>
+          )}
+
         </div>
+
       )}
+
     </div>
   );
+
 }
