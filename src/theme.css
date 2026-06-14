@@ -1,0 +1,219 @@
+:root {
+
+  --bg: #f8fafc;
+
+  --surface: #ffffff;
+
+  --text: #111827;
+
+  --muted: #6b7280;
+
+  --border: #e5e7eb;
+
+  --primary: #2563eb;
+
+  --primary-hover: #1d4ed8;
+
+  --success: #16a34a;
+
+  --danger: #dc2626;
+}
+
+[data-theme="dark"] {
+
+  --bg: #111827;
+
+  --surface: #1f2937;
+
+  --text: #f9fafb;
+
+  --muted: #d1d5db;
+
+  --border: #374151;
+
+  --primary: #3b82f6;
+
+  --primary-hover: #2563eb;
+
+  --success: #22c55e;
+
+  --danger: #ef4444;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+
+  margin: 0;
+
+  background: var(--bg);
+
+  color: var(--text);
+
+  font-family:
+    Inter,
+    Arial,
+    sans-serif;
+}
+
+button {
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+
+  font-size: 14px;
+}
+
+.primary-btn {
+
+  background: var(--primary);
+
+  color: white;
+
+  border: none;
+
+  padding: 12px 18px;
+
+  border-radius: 8px;
+}
+
+.primary-btn:hover {
+  background:
+    var(--primary-hover);
+}
+
+.secondary-btn {
+
+  background:
+    var(--surface);
+
+  color:
+    var(--text);
+
+  border:
+    1px solid
+    var(--border);
+
+  padding:
+    12px 18px;
+
+  border-radius: 8px;
+}
+
+.app-container {
+
+  max-width: 1200px;
+
+  margin: auto;
+
+  padding: 24px;
+}
+
+.card {
+
+  background:
+    var(--surface);
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius: 12px;
+
+  padding: 20px;
+}
+
+.responsive-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(280px, 1fr)
+    );
+
+  gap: 16px;
+}
+
+.exam-actions {
+
+  position: sticky;
+
+  bottom: 0;
+
+  background:
+    var(--bg);
+
+  padding: 16px 0;
+
+  margin-top: 24px;
+}
+
+@media (max-width: 768px) {
+
+  .app-container {
+
+    padding: 16px;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+  }
+
+  h3 {
+    font-size: 1rem;
+  }
+
+  button {
+
+    width: 100%;
+  }
+
+  .responsive-grid {
+
+    grid-template-columns:
+      1fr;
+  }
+
+  .exam-actions {
+
+    position: sticky;
+
+    bottom: 0;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .app-container {
+
+    padding: 12px;
+  }
+
+  h1 {
+    font-size: 1.4rem;
+  }
+
+  h2 {
+    font-size: 1.15rem;
+  }
+
+  button {
+
+    font-size: 14px;
+
+    padding: 14px;
+  }
+}
