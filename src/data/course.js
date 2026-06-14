@@ -58,5 +58,14 @@ export const COURSE = [
     title:
       "Exam Simulation",
     phase: "Exam"
+  },
+  {
+    day: 10.5,
+    title:
+      "AWS Foundations For AI",
+    phase:
+      "Bonus",
+    estimatedTime:
+      "60 min"
   }
 ];
