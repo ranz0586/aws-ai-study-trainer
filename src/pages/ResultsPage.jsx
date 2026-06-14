@@ -26,7 +26,8 @@ from "../hooks/useExamHistory";
 export default function ResultsPage({
   results,
   reviewWeakTopics,
-  backDashboard
+  backDashboard,
+  startRetake
 }) {
 
   const {
@@ -34,23 +35,25 @@ export default function ResultsPage({
   } = useExamHistory();
 
   const questions =
-    results?.questions ?? [];
+    results?.questions;
 
   const answers =
-    results?.answers ?? {};
+    results?.answers;
 
   const correct =
-    questions.filter(
-      (
-        question,
-        index
-      ) =>
-        answers[index] ===
-        question.answer
-    ).length;
+    questions
+      ? questions.filter(
+          (
+            question,
+            index
+          ) =>
+            answers[index] ===
+            question.answer
+        ).length
+      : 0;
 
   const score =
-    questions.length
+    questions?.length
       ? Math.round(
           (
             correct /
@@ -63,36 +66,48 @@ export default function ResultsPage({
     score >= 70;
 
   const domainScores =
-    useMemo(
-      () =>
-        questions.length
-          ? calculateDomainScores(
-              questions,
-              answers
-            )
-          : {},
-      [
+    useMemo(() => {
+
+      if (
+        !questions ||
+        !answers
+      ) {
+        return {};
+      }
+
+      return calculateDomainScores(
         questions,
         answers
-      ]
-    );
+      );
+
+    }, [
+      questions,
+      answers
+    ]);
 
   const incorrectQuestions =
-    useMemo(
-      () =>
-        questions.filter(
-          (
-            question,
-            index
-          ) =>
-            answers[index] !==
-            question.answer
-        ),
-      [
-        questions,
-        answers
-      ]
-    );
+    useMemo(() => {
+
+      if (
+        !questions ||
+        !answers
+      ) {
+        return [];
+      }
+
+      return questions.filter(
+        (
+          question,
+          index
+        ) =>
+          answers[index] !==
+          question.answer
+      );
+
+    }, [
+      questions,
+      answers
+    ]);
 
   const remediation =
     useMemo(
@@ -109,7 +124,8 @@ export default function ResultsPage({
 
   useEffect(() => {
 
-    if (!results) return;
+    if (!results)
+      return;
 
     addAttempt({
       score,
@@ -117,7 +133,13 @@ export default function ResultsPage({
       domainScores
     });
 
-  }, []);
+  }, [
+    results,
+    score,
+    passed,
+    domainScores,
+    addAttempt
+  ]);
 
   if (!results) {
 
@@ -248,6 +270,29 @@ export default function ResultsPage({
           missed questions
           identified.
         </p>
+
+        {incorrectQuestions
+          .length > 0 && (
+
+          <button
+            className="primary-btn"
+            onClick={() =>
+              startRetake(
+                incorrectQuestions
+              )
+            }
+          >
+            Retake Missed Questions
+            {" "}
+            (
+            {
+              incorrectQuestions
+                .length
+            }
+            )
+          </button>
+
+        )}
 
       </div>
 

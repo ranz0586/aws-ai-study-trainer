@@ -4,32 +4,51 @@ StudyRecommendationCard({
 }) {
 
   return (
+
     <div className="card">
 
       <h3>
-        {recommendation.domain}
+        Priority
+        {" "}
+        {
+          recommendation
+            .priority
+        }
       </h3>
 
       <p>
-        Priority:
-        {" "}
+
         <strong>
           {
-            recommendation.priority
+            recommendation
+              .domain
           }
         </strong>
+
+      </p>
+
+      <p>
+        Score:
+        {" "}
+        {
+          recommendation
+            .score
+        }
+        %
       </p>
 
       <p>
         Review Day(s):
         {" "}
         {
-          recommendation.reviewDays.join(
-            ", "
-          )
+          recommendation
+            .reviewDays
+            .join(", ")
         }
       </p>
 
     </div>
+
   );
+
 }

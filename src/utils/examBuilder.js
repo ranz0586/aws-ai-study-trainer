@@ -15,7 +15,7 @@ export function shuffle(
     const j =
       Math.floor(
         Math.random() *
-          (i + 1)
+        (i + 1)
       );
 
     [
@@ -39,6 +39,28 @@ export function buildExam(
 
   return shuffle(
     questionBank
+  ).slice(
+    0,
+    count
+  );
+
+}
+
+export function buildDomainExam(
+  questionBank,
+  domain,
+  count = 20
+) {
+
+  const domainQuestions =
+    questionBank.filter(
+      question =>
+        question.domain ===
+        domain
+    );
+
+  return shuffle(
+    domainQuestions
   ).slice(
     0,
     count

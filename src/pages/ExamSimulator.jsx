@@ -20,18 +20,42 @@ import {
 }
 from "../utils/examBuilder";
 
+import {
+  buildAdaptiveExam
+}
+from "../utils/adaptiveExamBuilder";
+
 export default function ExamSimulator({
-  startResults
+  startResults,
+  adaptive = false,
+  domainScores = {}
 }) {
 
   const questions =
     useMemo(
-      () =>
-        buildExam(
+      () => {
+
+        if (
+          adaptive
+        ) {
+
+          return buildAdaptiveExam({
+            domainScores,
+            count: 60
+          });
+
+        }
+
+        return buildExam(
           questionBank,
           60
-        ),
-      []
+        );
+
+      },
+      [
+        adaptive,
+        domainScores
+      ]
     );
 
   const [
@@ -51,7 +75,8 @@ export default function ExamSimulator({
 
       startResults({
         questions,
-        answers
+        answers,
+        adaptive
       });
 
     };
@@ -60,8 +85,28 @@ export default function ExamSimulator({
     <div className="app-container">
 
       <h1>
-        AWS AI Practitioner Exam
+
+        {adaptive
+          ? "Adaptive Practice Exam"
+          : "AWS AI Practitioner Exam"}
+
       </h1>
+
+      {adaptive && (
+
+        <div className="card">
+
+          <p>
+            This exam is
+            weighted toward
+            weak domains
+            identified from
+            prior attempts.
+          </p>
+
+        </div>
+
+      )}
 
       <ExamTimer
         seconds={seconds}
@@ -79,7 +124,9 @@ export default function ExamSimulator({
           ).length
         }
         {" / "}
-        {questions.length}
+        {
+          questions.length
+        }
       </p>
 
       {questions.map(
@@ -87,6 +134,7 @@ export default function ExamSimulator({
           question,
           index
         ) => (
+
           <ExamQuestion
             key={
               question.id
@@ -112,12 +160,14 @@ export default function ExamSimulator({
               )
             }
           />
+
         )
       )}
 
       <div
         className="exam-actions"
       >
+
         <button
           className="primary-btn"
           onClick={
@@ -126,8 +176,10 @@ export default function ExamSimulator({
         >
           Submit Exam
         </button>
+
       </div>
 
     </div>
   );
+
 }

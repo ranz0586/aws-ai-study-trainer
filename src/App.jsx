@@ -21,6 +21,12 @@ from "./pages/ExamHistoryPage";
 import ExamAnalyticsPage
 from "./pages/ExamAnalyticsPage";
 
+import RetakeMissedQuestions
+from "./pages/RetakeMissedQuestions";
+
+import RetakeSummary
+from "./components/RetakeSummary";
+
 import ErrorBoundary
 from "./components/ErrorBoundary";
 
@@ -59,6 +65,18 @@ export default function App() {
   const [
     examResults,
     setExamResults
+  ] =
+    useState(null);
+
+  const [
+    retakeQuestions,
+    setRetakeQuestions
+  ] =
+    useState([]);
+
+  const [
+    retakeResults,
+    setRetakeResults
   ] =
     useState(null);
 
@@ -239,6 +257,19 @@ export default function App() {
                   "dashboard"
                 )
               }
+              startRetake={(
+                questions
+              ) => {
+
+                setRetakeQuestions(
+                  questions
+                );
+
+                setPage(
+                  "retake"
+                );
+
+              }}
             />
           )}
 
@@ -256,6 +287,55 @@ export default function App() {
               }
             />
           )}
+
+        {page ===
+          "retake" && (
+
+          <RetakeMissedQuestions
+            questions={
+              retakeQuestions
+            }
+            finishRetake={
+              (
+                results
+              ) => {
+
+                setRetakeResults(
+                  results
+                );
+
+                setPage(
+                  "retakeSummary"
+                );
+
+              }
+            }
+          />
+
+        )}
+
+        {page ===
+          "retakeSummary" &&
+          retakeResults && (
+
+          <RetakeSummary
+            score={
+              retakeResults.score
+            }
+            correct={
+              retakeResults.correct
+            }
+            total={
+              retakeResults.total
+            }
+            backResults={() =>
+              setPage(
+                "results"
+              )
+            }
+          />
+
+        )}
 
         {page ===
           "history" && (
@@ -283,4 +363,5 @@ export default function App() {
 
     </ErrorBoundary>
   );
+
 }

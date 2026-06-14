@@ -16,12 +16,27 @@ from "../components/PageHeader";
 import TrendCard
 from "../components/TrendCard";
 
+import ReadinessCard
+from "../components/ReadinessCard";
+
+import AdaptiveExamCard
+from "../components/AdaptiveExamCard";
+
 import useExamHistory
 from "../hooks/useExamHistory";
 
+import useAdaptiveExam
+from "../hooks/useAdaptiveExam";
+
+import {
+  calculateReadiness
+}
+from "../utils/readinessPredictor";
+
 export default function Dashboard({
   progress,
-  openDay
+  openDay,
+  startAdaptiveExam
 }) {
 
   const {
@@ -30,7 +45,13 @@ export default function Dashboard({
     latestScore
   } = useExamHistory();
 
-  const readiness =
+  const {
+    weakDomains,
+    hasHistory
+  } =
+    useAdaptiveExam();
+
+  const progressPercent =
     Math.round(
       (
         progress.completedDays
@@ -38,6 +59,16 @@ export default function Dashboard({
         10
       ) * 100
     );
+
+  const readinessData =
+    calculateReadiness({
+      history,
+      domainScores:
+        history.length > 0
+          ? history[0]
+              .domainScores || {}
+          : {}
+    });
 
   return (
     <div className="app-container">
@@ -48,7 +79,9 @@ export default function Dashboard({
       />
 
       <ProgressBar
-        value={readiness}
+        value={
+          progressPercent
+        }
       />
 
       <div
@@ -58,16 +91,57 @@ export default function Dashboard({
         }}
       >
         <ScoreBadge
-          score={readiness}
+          score={
+            progressPercent
+          }
         />
       </div>
+
+      <ReadinessCard
+        readiness={
+          readinessData
+            .readiness
+        }
+        status={
+          readinessData
+            .status
+        }
+        weakDomains={
+          readinessData
+            .weakDomains
+        }
+      />
+
+      {hasHistory && (
+
+        <div
+          style={{
+            marginTop: 20,
+            marginBottom: 20
+          }}
+        >
+
+          <AdaptiveExamCard
+            weakDomains={
+              weakDomains
+            }
+            startAdaptiveExam={
+              startAdaptiveExam
+            }
+          />
+
+        </div>
+
+      )}
 
       <div
         className="responsive-grid"
         style={{
+          marginTop: 20,
           marginBottom: 32
         }}
       >
+
         <TrendCard
           title="Best Score"
           value={`${bestScore}%`}
@@ -80,15 +154,20 @@ export default function Dashboard({
 
         <TrendCard
           title="Attempts"
-          value={history.length}
+          value={
+            history.length
+          }
         />
+
       </div>
 
       <div
         className="responsive-grid"
       >
+
         {COURSE.map(
           day => (
+
             <DayCard
               key={day.day}
               {...day}
@@ -97,13 +176,18 @@ export default function Dashboard({
                 progress.currentDay
               }
               onOpen={() =>
-                openDay(day.day)
+                openDay(
+                  day.day
+                )
               }
             />
+
           )
         )}
+
       </div>
 
     </div>
   );
+
 }
