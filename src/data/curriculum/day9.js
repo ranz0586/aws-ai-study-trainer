@@ -1,304 +1,629 @@
 export const day9 = {
-  title: "Responsible AI",
+
+  title: "Responsible AI & Governance",
 
   objectives: [
-    "Understand responsible AI principles",
-    "Recognize sources of bias",
-    "Understand fairness and explainability",
-    "Understand privacy and transparency",
-    "Learn governance concepts tested on the exam"
+
+    "Understand Responsible AI principles",
+
+    "Understand bias and fairness",
+
+    "Understand transparency and explainability",
+
+    "Understand hallucinations and veracity",
+
+    "Understand human oversight",
+
+    "Understand AI safety and robustness",
+
+    "Understand SageMaker Clarify",
+
+    "Understand Model Monitor",
+
+    "Understand RLHF",
+
+    "Understand governance and compliance"
+
   ],
 
   lessons: [
-    {
-      title: "Responsible AI",
-      definition:
-        "Developing and using AI systems safely, fairly, and transparently.",
-      whyItMatters:
-        "Essential for trustworthy AI adoption.",
-      examples: [
-        "Bias mitigation",
-        "Privacy protection"
-      ],
-      awsTip:
-        "Responsible AI is a major AWS exam domain."
-    },
 
     {
-      title: "Fairness",
+      title: "Responsible AI",
+
       definition:
-        "Ensuring AI systems do not unfairly disadvantage groups.",
+        "The practice of developing and using AI systems safely, fairly, and ethically.",
+
       whyItMatters:
-        "Supports ethical decision-making.",
+        "Responsible AI is a dedicated AIF-C01 exam domain.",
+
       examples: [
-        "Hiring systems",
-        "Loan approvals"
+        "Fair lending",
+        "Medical AI",
+        "Hiring systems"
       ],
+
       awsTip:
-        "Fairness reduces discrimination."
+        "Responsible AI balances innovation and trust."
     },
 
     {
       title: "Bias",
+
       definition:
-        "Systematic errors that create unfair outcomes.",
+        "Systematic unfairness in AI outputs.",
+
       whyItMatters:
-        "Bias reduces trust and fairness.",
+        "Biased models can produce harmful or discriminatory outcomes.",
+
       examples: [
-        "Sampling bias",
-        "Label bias"
+        "Hiring bias",
+        "Loan approval bias",
+        "Dataset imbalance"
       ],
+
       awsTip:
-        "Bias is frequently tested."
+        "Bias often originates from training data."
     },
 
     {
-      title: "Sampling Bias",
-      definition:
-        "Training data does not represent the real population.",
-      whyItMatters:
-        "Leads to unfair outcomes.",
-      examples: [
-        "Underrepresented groups"
-      ],
-      awsTip:
-        "Bad data creates biased models."
-    },
+      title: "Fairness",
 
-    {
-      title: "Label Bias",
       definition:
-        "Training labels contain human bias.",
-      whyItMatters:
-        "Models learn biased decisions.",
-      examples: [
-        "Historical hiring decisions"
-      ],
-      awsTip:
-        "Biased labels produce biased models."
-    },
+        "Ensuring AI systems treat people and groups equitably.",
 
-    {
-      title: "Explainability",
-      definition:
-        "Ability to understand why a model made a decision.",
       whyItMatters:
-        "Supports trust and accountability.",
+        "Fairness helps prevent discriminatory outcomes.",
+
       examples: [
-        "Loan approval explanation",
-        "Medical diagnosis explanation"
+        "Equal hiring opportunities",
+        "Fair loan decisions"
       ],
+
       awsTip:
-        "Users should understand decisions."
+        "Bias reduces fairness."
     },
 
     {
       title: "Transparency",
+
       definition:
-        "Users know AI is involved in decision-making.",
+        "Providing visibility into how AI systems operate.",
+
       whyItMatters:
-        "Builds trust.",
+        "Users should understand when AI is being used.",
+
       examples: [
-        "AI-generated content labels"
+        "AI disclosures",
+        "Model documentation"
       ],
+
       awsTip:
-        "Transparency informs users."
+        "Transparency builds trust."
     },
 
     {
-      title: "Privacy",
+      title: "Explainability",
+
       definition:
-        "Protecting sensitive information.",
+        "The ability to understand why a model produced a specific output.",
+
       whyItMatters:
-        "Required for compliance and trust.",
+        "Critical for regulated industries.",
+
       examples: [
-        "Customer data",
-        "Medical records"
+        "Loan decisions",
+        "Medical recommendations"
       ],
+
       awsTip:
-        "Protect PII."
+        "Explainability answers 'why'."
+    },
+
+    {
+      title: "Hallucinations",
+
+      definition:
+        "Confidently generated but incorrect information.",
+
+      whyItMatters:
+        "A major limitation of Generative AI.",
+
+      examples: [
+        "Invented facts",
+        "Fake citations"
+      ],
+
+      awsTip:
+        "RAG helps reduce hallucinations."
+    },
+
+    {
+      title: "Veracity",
+
+      definition:
+        "The truthfulness and factual accuracy of AI outputs.",
+
+      whyItMatters:
+        "Reliable AI systems require accurate information.",
+
+      examples: [
+        "Verified answers",
+        "Trusted citations"
+      ],
+
+      awsTip:
+        "Hallucinations reduce veracity."
+    },
+
+    {
+      title: "Robustness",
+
+      definition:
+        "The ability of a model to perform reliably under different conditions.",
+
+      whyItMatters:
+        "Models should remain dependable when inputs change.",
+
+      examples: [
+        "Unexpected prompts",
+        "Noisy data"
+      ],
+
+      awsTip:
+        "Robust systems are more reliable."
+    },
+
+    {
+      title: "AI Safety",
+
+      definition:
+        "Practices that reduce harmful or unintended AI behavior.",
+
+      whyItMatters:
+        "Essential for trustworthy AI systems.",
+
+      examples: [
+        "Content filtering",
+        "Guardrails",
+        "Safety controls"
+      ],
+
+      awsTip:
+        "Safety reduces harmful outputs."
     },
 
     {
       title: "Human Oversight",
+
       definition:
-        "Humans can review or override AI decisions.",
+        "Humans review or supervise AI decisions.",
+
       whyItMatters:
-        "Reduces risk from automated systems.",
+        "Critical for high-impact use cases.",
+
       examples: [
-        "Loan approvals",
-        "Healthcare decisions"
+        "Medical review",
+        "Fraud review"
       ],
+
       awsTip:
         "High-risk decisions often require humans."
     },
 
     {
-      title: "Model Cards",
+      title: "Human-in-the-Loop",
+
       definition:
-        "Documentation describing a model's intended use, risks, and limitations.",
+        "Humans participate in the decision-making process.",
+
       whyItMatters:
-        "Improves transparency and governance.",
+        "Improves quality and accountability.",
+
       examples: [
-        "Model documentation"
+        "Approval workflows",
+        "Prediction review"
       ],
+
       awsTip:
-        "Model Cards describe risks and limitations."
+        "Human review is a common Responsible AI solution."
+    },
+
+    {
+      title: "Amazon Augmented AI (A2I)",
+
+      definition:
+        "AWS service that adds human review workflows to AI systems.",
+
+      whyItMatters:
+        "Supports Human-in-the-Loop architectures.",
+
+      examples: [
+        "Document review",
+        "Prediction validation"
+      ],
+
+      awsTip:
+        "Human review = A2I."
+    },
+
+    {
+      title: "Amazon SageMaker Clarify",
+
+      definition:
+        "AWS service that helps detect bias and improve explainability.",
+
+      whyItMatters:
+        "Frequently referenced in Responsible AI discussions.",
+
+      examples: [
+        "Bias detection",
+        "Feature importance"
+      ],
+
+      awsTip:
+        "Bias and explainability = Clarify."
+    },
+
+    {
+      title: "Amazon SageMaker Model Monitor",
+
+      definition:
+        "AWS service that monitors deployed models.",
+
+      whyItMatters:
+        "Helps identify drift and performance issues.",
+
+      examples: [
+        "Data drift",
+        "Quality monitoring"
+      ],
+
+      awsTip:
+        "Model Monitor watches deployed models."
+    },
+
+    {
+      title: "RLHF",
+
+      definition:
+        "Reinforcement Learning from Human Feedback.",
+
+      whyItMatters:
+        "Improves model alignment with human preferences.",
+
+      examples: [
+        "Chatbot ranking",
+        "Response preferences"
+      ],
+
+      awsTip:
+        "RLHF uses humans to improve outputs."
+    },
+
+    {
+      title: "Governance",
+
+      definition:
+        "Policies and controls that guide AI usage.",
+
+      whyItMatters:
+        "Organizations need responsible AI oversight.",
+
+      examples: [
+        "Usage policies",
+        "Approval processes"
+      ],
+
+      awsTip:
+        "Governance defines how AI should be used."
+    },
+
+    {
+      title: "Compliance",
+
+      definition:
+        "Following laws, regulations, and organizational policies.",
+
+      whyItMatters:
+        "AI systems often operate in regulated environments.",
+
+      examples: [
+        "Financial regulations",
+        "Healthcare regulations"
+      ],
+
+      awsTip:
+        "Compliance reduces organizational risk."
     }
+
   ],
 
   flashcards: [
+
     {
       q: "Systematic unfairness in AI",
       a: "Bias",
       explanation:
-        "Creates unfair outcomes.",
+        "Bias can create unfair outcomes.",
       example:
         "Hiring discrimination.",
       examTip:
-        "Bias = unfairness."
+        "Bias often originates from data."
     },
 
     {
-      q: "Understanding why a model made a decision",
+      q: "Treating groups equitably",
+      a: "Fairness",
+      explanation:
+        "Fairness helps reduce discrimination.",
+      example:
+        "Equal loan evaluations.",
+      examTip:
+        "Fairness combats bias."
+    },
+
+    {
+      q: "Understanding why a model responded a certain way",
       a: "Explainability",
       explanation:
-        "Makes decisions understandable.",
+        "Explains model decisions.",
       example:
-        "Loan rejection explanation.",
+        "Loan approval reasons.",
       examTip:
-        "Explainability = decision transparency."
+        "Explainability = Why."
     },
 
     {
-      q: "Users know AI is involved",
-      a: "Transparency",
+      q: "Confident but incorrect AI output",
+      a: "Hallucination",
       explanation:
-        "AI usage is disclosed.",
+        "Generated false information.",
       example:
-        "AI-generated content labels.",
+        "Fake citations.",
       examTip:
-        "Transparency builds trust."
+        "Hallucinations reduce trust."
     },
 
     {
-      q: "Humans can intervene",
-      a: "Human Oversight",
+      q: "Truthfulness of AI output",
+      a: "Veracity",
       explanation:
-        "Humans review decisions.",
+        "Measures factual correctness.",
       example:
-        "Medical diagnosis review.",
+        "Accurate responses.",
       examTip:
-        "Humans remain accountable."
+        "Hallucinations reduce veracity."
     },
 
     {
-      q: "Documents intended use and risks",
-      a: "Model Card",
+      q: "AWS service for bias detection",
+      a: "SageMaker Clarify",
       explanation:
-        "Model documentation.",
+        "Supports bias analysis and explainability.",
       example:
-        "AI governance reports.",
+        "Fairness reviews.",
       examTip:
-        "Model Cards describe limitations."
+        "Bias = Clarify."
+    },
+
+    {
+      q: "AWS service for deployed model monitoring",
+      a: "SageMaker Model Monitor",
+      explanation:
+        "Tracks model quality after deployment.",
+      example:
+        "Detecting drift.",
+      examTip:
+        "Monitor = Model Monitor."
+    },
+
+    {
+      q: "Human review workflow service",
+      a: "Amazon A2I",
+      explanation:
+        "Adds humans into AI workflows.",
+      example:
+        "Prediction review.",
+      examTip:
+        "Human review = A2I."
     }
+
   ],
 
   checks: [
-    {
-      q: "What is systematic unfairness in AI called?",
-      options: [
-        "Bias",
-        "Recall",
-        "Regression",
-        "Monitoring"
-      ],
-      answer: 0,
-      explanation:
-        "Bias creates unfair outcomes."
-    },
 
     {
-      q: "What helps users understand model decisions?",
+      q:
+        "Which concept focuses on reducing unfair outcomes?",
+
       options: [
-        "Explainability",
+        "Fairness",
+        "Hallucination",
         "Embedding",
-        "Classification",
+        "Chunking"
+      ],
+
+      answer: 0,
+
+      explanation:
+        "Fairness promotes equitable treatment."
+    },
+
+    {
+      q:
+        "What is a hallucination?",
+
+      options: [
+        "Generated false information",
+        "Model retraining",
+        "Vector search",
         "Monitoring"
       ],
+
       answer: 0,
+
       explanation:
-        "Explainability reveals decision logic."
+        "Hallucinations are incorrect outputs."
     },
 
     {
-      q: "What principle requires users to know AI is involved?",
+      q:
+        "Which AWS service helps detect model bias?",
+
       options: [
-        "Privacy",
-        "Transparency",
-        "Recall",
-        "Regression"
+        "Clarify",
+        "Textract",
+        "Translate",
+        "Lex"
       ],
-      answer: 1,
+
+      answer: 0,
+
       explanation:
-        "Transparency informs users."
+        "Clarify supports bias analysis."
     },
 
     {
-      q: "What describes intended use, risks, and limitations?",
+      q:
+        "Which AWS service monitors deployed models?",
+
       options: [
-        "Model Card",
-        "CloudTrail",
-        "IAM",
+        "Model Monitor",
+        "Polly",
+        "Comprehend",
+        "Translate"
+      ],
+
+      answer: 0,
+
+      explanation:
+        "Model Monitor tracks deployed model quality."
+    },
+
+    {
+      q:
+        "Which approach introduces humans into AI decisions?",
+
+      options: [
+        "Human-in-the-Loop",
+        "Chunking",
+        "Regression",
         "Embedding"
       ],
+
       answer: 0,
+
       explanation:
-        "Model Cards document models."
+        "Humans review or validate outputs."
+    },
+
+    {
+      q:
+        "What does RLHF stand for?",
+
+      options: [
+        "Reinforcement Learning from Human Feedback",
+        "Regression Learning for Human Functions",
+        "Reinforced Logic Framework",
+        "Rule Learning Human Feedback"
+      ],
+
+      answer: 0,
+
+      explanation:
+        "RLHF improves model alignment through human feedback."
     }
+
   ],
 
   scenarios: [
+
     {
       scenario:
-        "A bank wants applicants to understand why loans are rejected.",
+        "A bank wants to evaluate whether its loan approval model treats applicants fairly.",
+
       options: [
-        "Explainability",
-        "Embedding",
+        "SageMaker Clarify",
+        "Textract",
+        "Translate",
+        "Polly"
+      ],
+
+      answer: 0,
+
+      explanation:
+        "Clarify helps identify bias."
+    },
+
+    {
+      scenario:
+        "A company wants humans to verify AI-generated decisions before final approval.",
+
+      options: [
+        "A2I",
+        "Forecast",
+        "Rekognition",
+        "Translate"
+      ],
+
+      answer: 0,
+
+      explanation:
+        "A2I provides human review workflows."
+    },
+
+    {
+      scenario:
+        "A chatbot confidently generates incorrect information.",
+
+      options: [
+        "Hallucination",
+        "Clustering",
         "Regression",
         "Monitoring"
       ],
+
       answer: 0,
+
       explanation:
-        "Explainability provides reasons for decisions."
+        "This is a hallucination."
     },
 
     {
       scenario:
-        "A company reviews AI hiring recommendations before making final decisions.",
+        "A company wants to monitor a deployed model for quality degradation.",
+
       options: [
-        "Human Oversight",
-        "Regression",
+        "Model Monitor",
+        "Polly",
+        "Textract",
+        "Translate"
+      ],
+
+      answer: 0,
+
+      explanation:
+        "Model Monitor tracks deployed model quality."
+    },
+
+    {
+      scenario:
+        "A healthcare organization requires explanations for AI-generated recommendations.",
+
+      options: [
+        "Explainability",
+        "Chunking",
         "Embedding",
-        "Classification"
+        "Prompting"
       ],
-      answer: 0,
-      explanation:
-        "Humans review AI decisions."
-    },
 
-    {
-      scenario:
-        "An AI system disadvantages a demographic group due to poor training data.",
-      options: [
-        "Bias",
-        "Recall",
-        "Monitoring",
-        "Regression"
-      ],
       answer: 0,
+
       explanation:
-        "Unfair outcomes indicate bias."
+        "Explainability helps users understand decisions."
     }
+
   ]
+
 };

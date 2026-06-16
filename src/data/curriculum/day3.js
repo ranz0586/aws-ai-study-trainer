@@ -1,269 +1,596 @@
 export const day3 = {
+
   title: "Generative AI Foundations",
 
   objectives: [
-    "Understand foundation models and LLMs",
-    "Understand tokens and context windows",
-    "Understand temperature settings",
-    "Recognize hallucinations and mitigation techniques"
+
+    "Understand Generative AI concepts",
+
+    "Understand Foundation Models and LLMs",
+
+    "Understand tokens, context windows, and inference",
+
+    "Understand transformers and modern GenAI architectures",
+
+    "Understand hallucinations, temperature, and model parameters",
+
+    "Understand multimodal AI and diffusion models",
+
+    "Recognize AWS Generative AI services and concepts"
+
   ],
 
   lessons: [
+
+    {
+      title: "Generative AI",
+
+      definition:
+        "Artificial Intelligence capable of creating new content such as text, images, audio, code, and video.",
+
+      whyItMatters:
+        "Generative AI is a major domain of the AWS AI Practitioner exam.",
+
+      examples: [
+        "Chatbots",
+        "Code generation",
+        "Image generation"
+      ],
+
+      awsTip:
+        "Generative AI creates content, unlike traditional ML which predicts outcomes."
+    },
+
     {
       title: "Foundation Models",
+
       definition:
-        "Large pretrained models trained on massive datasets.",
+        "Large pretrained models trained on vast amounts of data that can perform many different tasks.",
+
       whyItMatters:
-        "Foundation models power modern Generative AI systems.",
+        "Foundation Models power most modern Generative AI systems.",
+
       examples: [
         "Claude",
         "Titan",
         "Llama"
       ],
+
       awsTip:
-        "Amazon Bedrock provides access to foundation models."
+        "A Foundation Model can be adapted to many business use cases."
     },
 
     {
       title: "Large Language Models (LLMs)",
+
       definition:
-        "Foundation models specialized for text generation and understanding.",
+        "Foundation Models specialized for language understanding and generation.",
+
       whyItMatters:
-        "LLMs power chatbots and assistants.",
+        "LLMs power chatbots, assistants, summarization, and content generation.",
+
       examples: [
         "Claude",
         "ChatGPT"
       ],
+
       awsTip:
-        "LLMs are a type of foundation model."
+        "All LLMs are Foundation Models, but not all Foundation Models are LLMs."
+    },
+
+    {
+      title: "Training vs Inference",
+
+      definition:
+        "Training teaches a model using data. Inference uses the trained model to generate predictions or content.",
+
+      whyItMatters:
+        "AWS frequently tests the distinction between training and inference.",
+
+      examples: [
+        "Model creation",
+        "Model usage"
+      ],
+
+      awsTip:
+        "Training learns. Inference answers."
     },
 
     {
       title: "Tokens",
+
       definition:
         "Small units of text processed by a model.",
+
       whyItMatters:
-        "Token usage affects cost and latency.",
+        "Token count directly affects model context limits and costs.",
+
       examples: [
         "Words",
-        "Parts of words",
-        "Punctuation"
+        "Word fragments",
+        "Characters"
       ],
+
       awsTip:
-        "More tokens = more cost."
+        "More tokens generally mean higher inference cost."
     },
 
     {
       title: "Context Window",
+
       definition:
-        "The amount of information a model can remember during a conversation.",
+        "The maximum amount of information a model can consider at one time.",
+
       whyItMatters:
-        "Larger context windows support larger documents.",
+        "Context limits affect prompt size and retrieved knowledge.",
+
       examples: [
-        "Long reports",
-        "Books",
-        "Large conversations"
+        "Prompt text",
+        "Retrieved documents",
+        "Conversation history"
       ],
+
       awsTip:
-        "Large context windows improve document understanding."
+        "A larger context window allows more information to be processed."
+    },
+
+    {
+      title: "Transformers",
+
+      definition:
+        "A neural network architecture that powers modern Generative AI systems.",
+
+      whyItMatters:
+        "Transformers enable LLMs to understand relationships across large amounts of text.",
+
+      examples: [
+        "Claude",
+        "GPT",
+        "Llama"
+      ],
+
+      awsTip:
+        "Modern LLMs are transformer-based models."
     },
 
     {
       title: "Temperature",
+
       definition:
-        "Controls randomness in model outputs.",
+        "A parameter that controls randomness in generated output.",
+
       whyItMatters:
-        "Determines creativity versus consistency.",
+        "Temperature influences creativity and consistency.",
+
       examples: [
         "Creative writing",
-        "Factual responses"
+        "Deterministic responses"
       ],
+
       awsTip:
-        "Low temperature = factual. High temperature = creative."
+        "Low temperature = predictable. High temperature = creative."
     },
 
     {
       title: "Hallucinations",
+
       definition:
-        "Confidently incorrect AI responses.",
+        "Incorrect or fabricated responses generated by AI models.",
+
       whyItMatters:
-        "Hallucinations create trust and accuracy issues.",
+        "A major limitation of Generative AI.",
+
       examples: [
-        "Fake citations",
-        "Invented facts"
+        "Invented facts",
+        "Fake citations"
       ],
+
       awsTip:
-        "Hallucinations are heavily tested."
+        "Hallucinations are confidently presented incorrect information."
     },
 
     {
-      title: "Reducing Hallucinations",
+      title: "Prompt",
+
       definition:
-        "Techniques that improve factual accuracy.",
+        "The instruction or input given to a Generative AI model.",
+
       whyItMatters:
-        "Critical for enterprise AI systems.",
+        "Prompt quality strongly affects output quality.",
+
       examples: [
-        "RAG",
-        "Prompt engineering",
-        "Human review"
+        "Questions",
+        "Instructions",
+        "Tasks"
       ],
+
       awsTip:
-        "RAG is a common mitigation strategy."
+        "Better prompts generally produce better responses."
+    },
+
+    {
+      title: "Multimodal Models",
+
+      definition:
+        "Models capable of processing multiple data types such as text, images, audio, or video.",
+
+      whyItMatters:
+        "Multimodal AI is increasingly common in AWS services and Foundation Models.",
+
+      examples: [
+        "Image plus text analysis",
+        "Voice assistants"
+      ],
+
+      awsTip:
+        "Multimodal means multiple input or output formats."
+    },
+
+    {
+      title: "Diffusion Models",
+
+      definition:
+        "Generative models commonly used for image generation.",
+
+      whyItMatters:
+        "Diffusion models are foundational to modern image generation systems.",
+
+      examples: [
+        "AI image generation",
+        "Artwork creation"
+      ],
+
+      awsTip:
+        "Diffusion models are associated with image generation."
+    },
+
+    {
+      title: "Model Parameters",
+
+      definition:
+        "Internal values learned during training that influence model behavior.",
+
+      whyItMatters:
+        "Parameter count is often associated with model capability.",
+
+      examples: [
+        "Billions of parameters",
+        "Foundation Models"
+      ],
+
+      awsTip:
+        "Parameters are learned during training."
+    },
+
+    {
+      title: "Fine-Tuning",
+
+      definition:
+        "Additional training on domain-specific data to specialize a Foundation Model.",
+
+      whyItMatters:
+        "Fine-tuning adapts models for specific business tasks.",
+
+      examples: [
+        "Medical chatbot",
+        "Legal assistant"
+      ],
+
+      awsTip:
+        "Fine-tuning changes model behavior through additional training."
+    },
+
+    {
+      title: "Amazon Bedrock",
+
+      definition:
+        "AWS service providing access to Foundation Models through a managed platform.",
+
+      whyItMatters:
+        "Central Generative AI service for AWS.",
+
+      examples: [
+        "Claude",
+        "Titan",
+        "Llama"
+      ],
+
+      awsTip:
+        "Bedrock provides access to multiple Foundation Models through a single API."
     }
+
   ],
 
   flashcards: [
+
     {
-      q: "Large pretrained model",
-      a: "Foundation Model",
+      q: "What is Generative AI?",
+      a: "AI that creates new content.",
       explanation:
-        "Pretrained on massive datasets.",
+        "Generates text, images, audio, code, and more.",
+      example:
+        "Chatbots and image generators.",
+      examTip:
+        "Generate = Create."
+    },
+
+    {
+      q: "What is a Foundation Model?",
+      a: "A large pretrained model adaptable to many tasks.",
+      explanation:
+        "Foundation Models support many applications.",
       example:
         "Claude.",
       examTip:
-        "Foundation model is broader than LLM."
+        "Foundation Models power modern GenAI."
     },
 
     {
-      q: "Foundation model specialized for text",
-      a: "LLM",
+      q: "What is an LLM?",
+      a: "A Foundation Model specialized for language.",
       explanation:
-        "Large Language Model.",
+        "LLMs work primarily with text.",
       example:
         "Claude.",
       examTip:
-        "LLM is a subset of foundation models."
+        "LLM ⊂ Foundation Model."
     },
 
     {
-      q: "Pieces of text processed by models",
-      a: "Tokens",
+      q: "Training vs Inference",
+      a: "Training learns. Inference uses.",
       explanation:
-        "Models process tokens rather than words.",
+        "Models are trained first, then used for predictions.",
       example:
-        "Hello world can become multiple tokens.",
+        "Creating vs using a chatbot.",
       examTip:
-        "More tokens = higher cost."
+        "AWS frequently tests this distinction."
     },
 
     {
-      q: "Amount of information remembered",
-      a: "Context Window",
+      q: "What affects token cost?",
+      a: "More tokens.",
       explanation:
-        "Defines memory capacity.",
+        "Token usage contributes directly to cost.",
       example:
-        "200-page document.",
+        "Long prompts.",
       examTip:
-        "Larger context = more information retained."
+        "Reduce unnecessary prompt length."
     },
 
     {
-      q: "Confidently incorrect output",
-      a: "Hallucination",
+      q: "What is a context window?",
+      a: "The maximum information a model can process at once.",
       explanation:
-        "AI-generated false information.",
+        "Determines how much content fits into a request.",
       example:
-        "Fake legal cases.",
+        "Prompt plus retrieved documents.",
       examTip:
-        "RAG reduces hallucinations."
+        "Larger context = more information."
+    },
+
+    {
+      q: "What controls creativity?",
+      a: "Temperature",
+      explanation:
+        "Temperature affects randomness.",
+      example:
+        "Creative writing.",
+      examTip:
+        "High temperature = more random."
+    },
+
+    {
+      q: "What is a hallucination?",
+      a: "Incorrect generated content.",
+      explanation:
+        "Models can generate false information.",
+      example:
+        "Invented facts.",
+      examTip:
+        "Hallucinations are a major GenAI limitation."
+    },
+
+    {
+      q: "What architecture powers modern LLMs?",
+      a: "Transformers",
+      explanation:
+        "Transformers are the foundation of modern LLMs.",
+      example:
+        "Claude and GPT.",
+      examTip:
+        "Transformers power modern GenAI."
+    },
+
+    {
+      q: "What type of model is commonly used for image generation?",
+      a: "Diffusion Model",
+      explanation:
+        "Diffusion models generate images through iterative refinement.",
+      example:
+        "AI image generation.",
+      examTip:
+        "Diffusion = Images."
     }
+
   ],
 
   checks: [
+
     {
-      q: "Which setting increases creativity?",
+      q:
+        "Which statement best describes Generative AI?",
+
       options: [
+        "Stores data",
+        "Creates new content",
+        "Encrypts files",
+        "Monitors systems"
+      ],
+
+      answer: 1,
+
+      explanation:
+        "Generative AI creates new content."
+    },
+
+    {
+      q:
+        "Which activity occurs after a model has already been trained?",
+
+      options: [
+        "Inference",
+        "Training",
+        "Feature Engineering",
+        "Labeling"
+      ],
+
+      answer: 0,
+
+      explanation:
+        "Inference uses a trained model."
+    },
+
+    {
+      q:
+        "Which parameter increases randomness?",
+
+      options: [
+        "Token Count",
         "Temperature",
         "Embedding",
-        "Recall",
-        "Precision"
+        "Vector"
       ],
-      answer: 0,
+
+      answer: 1,
+
       explanation:
         "Temperature controls randomness."
     },
 
     {
-      q: "What increases token cost?",
-      options: [
-        "More tokens",
-        "Fewer tokens",
-        "Lower temperature",
-        "Monitoring"
-      ],
-      answer: 0,
-      explanation:
-        "Token usage drives cost."
-    },
+      q:
+        "What is a hallucination?",
 
-    {
-      q: "What is a hallucination?",
       options: [
-        "Correct answer",
-        "Model drift",
-        "Confidently incorrect response",
-        "Embedding"
+        "Encryption",
+        "Monitoring",
+        "Generated false information",
+        "Compression"
       ],
+
       answer: 2,
+
       explanation:
         "Hallucinations are incorrect outputs."
     },
 
     {
-      q: "Which technique reduces hallucinations?",
+      q:
+        "Which architecture powers modern LLMs?",
+
       options: [
-        "Regression",
-        "RAG",
-        "Clustering",
-        "Reinforcement Learning"
+        "Transformers",
+        "Databases",
+        "Vectors",
+        "Clusters"
       ],
-      answer: 1,
+
+      answer: 0,
+
       explanation:
-        "RAG provides factual context."
+        "Transformers power modern LLMs."
+    },
+
+    {
+      q:
+        "Which AWS service provides access to Foundation Models?",
+
+      options: [
+        "CloudTrail",
+        "Amazon Bedrock",
+        "IAM",
+        "S3"
+      ],
+
+      answer: 1,
+
+      explanation:
+        "Bedrock provides managed Foundation Models."
     }
+
   ],
 
   scenarios: [
-    {
-      scenario:
-        "A company chatbot invents company policies that do not exist.",
-      options: [
-        "Temperature",
-        "Hallucination",
-        "Clustering",
-        "Regression"
-      ],
-      answer: 1,
-      explanation:
-        "Invented facts are hallucinations."
-    },
 
     {
       scenario:
-        "An organization wants a chatbot to answer questions using internal documents.",
+        "A company wants to generate marketing content automatically.",
+
       options: [
-        "RAG",
+        "Generative AI",
         "Regression",
         "Classification",
-        "Monitoring"
+        "Clustering"
       ],
+
       answer: 0,
+
       explanation:
-        "RAG retrieves documents before generating responses."
+        "Generating content is a Generative AI task."
     },
 
     {
       scenario:
-        "A marketing team wants highly creative content generation.",
+        "A chatbot returns a confident but completely incorrect answer.",
+
       options: [
-        "Low Temperature",
-        "High Temperature",
+        "Classification",
+        "Hallucination",
         "Regression",
+        "Embedding"
+      ],
+
+      answer: 1,
+
+      explanation:
+        "The model generated false information."
+    },
+
+    {
+      scenario:
+        "A company needs access to multiple Foundation Models through AWS.",
+
+      options: [
+        "CloudTrail",
+        "Amazon Bedrock",
+        "Route 53",
+        "CloudFront"
+      ],
+
+      answer: 1,
+
+      explanation:
+        "Amazon Bedrock provides managed Foundation Model access."
+    },
+
+    {
+      scenario:
+        "A user wants an AI system that can analyze both images and text.",
+
+      options: [
+        "Regression",
+        "Classification",
+        "Multimodal Model",
         "Clustering"
       ],
-      answer: 1,
+
+      answer: 2,
+
       explanation:
-        "High temperature increases creativity."
+        "Multimodal models work with multiple data types."
     }
+
   ]
+
 };

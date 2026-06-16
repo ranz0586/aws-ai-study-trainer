@@ -1,304 +1,631 @@
 export const day6 = {
+
   title: "RAG, Fine-Tuning & Agents",
 
   objectives: [
+
     "Understand Retrieval-Augmented Generation (RAG)",
-    "Know when to use RAG vs Fine-Tuning",
+
+    "Understand vector retrieval workflows",
+
+    "Understand chunking and embeddings in RAG",
+
+    "Differentiate RAG and Fine-Tuning",
+
+    "Understand Knowledge Bases",
+
     "Understand AI Agents",
-    "Understand Guardrails",
-    "Recognize AWS exam patterns for GenAI architectures"
+
+    "Understand tool use and orchestration",
+
+    "Understand RLHF",
+
+    "Recognize common AWS exam scenarios"
+
   ],
 
   lessons: [
+
     {
       title: "Retrieval-Augmented Generation (RAG)",
+
       definition:
-        "A technique that retrieves relevant information before generating a response.",
+        "A technique that retrieves external information and provides it to a model before generating a response.",
+
       whyItMatters:
-        "Keeps answers grounded in current and authoritative information.",
+        "One of the most heavily tested Generative AI concepts.",
+
       examples: [
-        "Company policy chatbot",
-        "Internal knowledge search",
-        "Customer support assistant"
+        "Internal knowledge bases",
+        "Policy documents",
+        "Customer support systems"
       ],
+
       awsTip:
-        "Current company knowledge usually means RAG."
+        "RAG retrieves information before generation."
+    },
+
+    {
+      title: "Why RAG Exists",
+
+      definition:
+        "Foundation Models do not automatically know company-specific information.",
+
+      whyItMatters:
+        "Organizations often need responses based on internal documents.",
+
+      examples: [
+        "HR policies",
+        "Product manuals",
+        "Company procedures"
+      ],
+
+      awsTip:
+        "RAG adds external knowledge without retraining."
+    },
+
+    {
+      title: "Knowledge Base",
+
+      definition:
+        "A collection of trusted information used during retrieval.",
+
+      whyItMatters:
+        "Knowledge bases improve factual accuracy.",
+
+      examples: [
+        "PDFs",
+        "Wiki articles",
+        "Internal documentation"
+      ],
+
+      awsTip:
+        "Knowledge Bases are commonly paired with RAG."
+    },
+
+    {
+      title: "Chunking",
+
+      definition:
+        "Splitting documents into smaller sections before creating embeddings.",
+
+      whyItMatters:
+        "Improves retrieval relevance.",
+
+      examples: [
+        "Paragraph chunks",
+        "Section chunks"
+      ],
+
+      awsTip:
+        "Chunking is often tested alongside RAG."
+    },
+
+    {
+      title: "Embeddings in RAG",
+
+      definition:
+        "Documents and queries are converted into vectors for semantic retrieval.",
+
+      whyItMatters:
+        "Embeddings make semantic search possible.",
+
+      examples: [
+        "Document embeddings",
+        "Query embeddings"
+      ],
+
+      awsTip:
+        "Embeddings power retrieval."
+    },
+
+    {
+      title: "Vector Search",
+
+      definition:
+        "Finding the most relevant content using vector similarity.",
+
+      whyItMatters:
+        "Retrieval depends on vector search.",
+
+      examples: [
+        "Policy retrieval",
+        "Knowledge search"
+      ],
+
+      awsTip:
+        "Vector search occurs before generation."
     },
 
     {
       title: "RAG Workflow",
-      definition:
-        "Retrieve documents → Send context to model → Generate response.",
-      whyItMatters:
-        "Reduces hallucinations and improves accuracy.",
-      examples: [
-        "Search knowledge base",
-        "Retrieve policy documents",
-        "Generate answer"
-      ],
-      awsTip:
-        "RAG retrieves before generation."
-    },
 
-    {
-      title: "When to Use RAG",
       definition:
-        "Best for knowledge that changes frequently.",
+        "User Question → Embedding → Vector Search → Retrieved Context → LLM Response.",
+
       whyItMatters:
-        "Avoids retraining models every time data changes.",
+        "Understanding the sequence is important for the exam.",
+
       examples: [
-        "Company policies",
-        "Product catalogs",
-        "Current documentation"
+        "Support chatbot",
+        "Internal assistant"
       ],
+
       awsTip:
-        "Frequently changing knowledge = RAG."
+        "Retrieval happens before generation."
     },
 
     {
       title: "Fine-Tuning",
-      definition:
-        "Training a model on additional examples to change its behavior.",
-      whyItMatters:
-        "Allows specialization for a particular style or task.",
-      examples: [
-        "Legal drafting style",
-        "Medical report formatting",
-        "Corporate writing standards"
-      ],
-      awsTip:
-        "Fine-tuning changes behavior, not knowledge retrieval."
-    },
 
-    {
-      title: "When to Use Fine-Tuning",
       definition:
-        "Best when you want consistent outputs or specialized behavior.",
+        "Additional model training using domain-specific data.",
+
       whyItMatters:
-        "Improves performance for specific tasks.",
+        "Changes model behavior and knowledge.",
+
       examples: [
-        "Brand voice",
-        "Specialized document generation"
+        "Medical assistant",
+        "Legal assistant"
       ],
+
       awsTip:
-        "Writing style = Fine-Tuning."
+        "Fine-tuning modifies the model."
     },
 
     {
       title: "RAG vs Fine-Tuning",
+
       definition:
-        "RAG provides current information. Fine-tuning changes model behavior.",
+        "RAG retrieves knowledge while Fine-Tuning changes model weights.",
+
       whyItMatters:
-        "One of the most tested AWS exam concepts.",
+        "This distinction appears frequently on AWS exams.",
+
       examples: [
-        "Current policies → RAG",
-        "Legal writing style → Fine-Tuning"
+        "Policy updates → RAG",
+        "Specialized behavior → Fine-Tuning"
       ],
+
       awsTip:
-        "Current knowledge = RAG. Behavior change = Fine-Tuning."
+        "Changing knowledge usually favors RAG."
     },
 
     {
-      title: "AI Agents",
+      title: "When to Use RAG",
+
       definition:
-        "Systems that can reason, plan, use tools, and execute actions.",
+        "Use RAG when information changes frequently.",
+
       whyItMatters:
-        "Agents move beyond simple chat interactions.",
+        "Updating documents is easier than retraining models.",
+
       examples: [
-        "Travel booking assistant",
-        "IT support automation",
-        "Workflow orchestration"
+        "Policies",
+        "Product documentation",
+        "Knowledge bases"
       ],
+
       awsTip:
-        "Agents can take actions, not just answer questions."
+        "Frequently changing information = RAG."
     },
 
     {
-      title: "Agent Capabilities",
+      title: "When to Use Fine-Tuning",
+
       definition:
-        "Reasoning, planning, tool use, and execution.",
+        "Use Fine-Tuning when model behavior must change.",
+
       whyItMatters:
-        "Distinguishes agents from standard chatbots.",
+        "Specialized output styles may require training.",
+
       examples: [
-        "Book flights",
-        "Create tickets",
-        "Query databases"
+        "Industry-specific terminology",
+        "Custom writing styles"
       ],
+
       awsTip:
-        "Tool usage is a key agent feature."
+        "Behavior changes = Fine-Tuning."
     },
 
     {
-      title: "Guardrails",
+      title: "Agents",
+
       definition:
-        "Safety controls applied to AI systems.",
+        "AI systems capable of planning, reasoning, and performing actions using tools.",
+
       whyItMatters:
-        "Protects users and organizations.",
+        "Agents are a major Foundation Model application area.",
+
       examples: [
-        "Block hate speech",
-        "Block PII",
-        "Restrict topics"
+        "Travel assistants",
+        "Research assistants",
+        "Customer support automation"
       ],
+
       awsTip:
-        "Guardrails are safety mechanisms."
+        "Agents can use tools and workflows."
     },
 
     {
-      title: "Responsible Agent Design",
+      title: "Tools",
+
       definition:
-        "Agents should operate within defined boundaries.",
+        "External capabilities an agent can invoke to complete tasks.",
+
       whyItMatters:
-        "Prevents harmful or unauthorized actions.",
+        "Agents often need access to systems beyond the LLM.",
+
       examples: [
-        "Restricted tool access",
-        "Human approval workflows"
+        "Databases",
+        "APIs",
+        "Calendars"
       ],
+
       awsTip:
-        "Guardrails and oversight often appear together."
+        "Agents become more useful through tools."
+    },
+
+    {
+      title: "Agent Orchestration",
+
+      definition:
+        "Coordinating steps, tools, and reasoning to accomplish goals.",
+
+      whyItMatters:
+        "Allows multi-step task completion.",
+
+      examples: [
+        "Research then summarize",
+        "Book then confirm"
+      ],
+
+      awsTip:
+        "Agents execute workflows."
+    },
+
+    {
+      title: "Human Feedback",
+
+      definition:
+        "People evaluate outputs and provide guidance for improvement.",
+
+      whyItMatters:
+        "Human feedback improves model quality.",
+
+      examples: [
+        "Response ranking",
+        "Preference scoring"
+      ],
+
+      awsTip:
+        "Humans help improve model behavior."
+    },
+
+    {
+      title: "RLHF",
+
+      definition:
+        "Reinforcement Learning from Human Feedback.",
+
+      whyItMatters:
+        "A common technique used to improve Foundation Models.",
+
+      examples: [
+        "Chatbot improvement",
+        "Response alignment"
+      ],
+
+      awsTip:
+        "RLHF combines reinforcement learning and human preferences."
+    },
+
+    {
+      title: "Hallucination Reduction",
+
+      definition:
+        "Techniques that improve factual accuracy.",
+
+      whyItMatters:
+        "Hallucinations remain a major GenAI challenge.",
+
+      examples: [
+        "RAG",
+        "Grounding",
+        "Knowledge Bases"
+      ],
+
+      awsTip:
+        "RAG commonly reduces hallucinations."
     }
+
   ],
 
   flashcards: [
+
     {
-      q: "Current company knowledge?",
-      a: "RAG",
+      q: "What does RAG stand for?",
+      a: "Retrieval-Augmented Generation",
       explanation:
-        "Retrieves current information before generating responses.",
+        "Retrieves information before generation.",
       example:
-        "Internal policy chatbot.",
+        "Internal chatbot.",
       examTip:
-        "Frequently changing knowledge = RAG."
+        "RAG retrieves external knowledge."
     },
 
     {
-      q: "Change model behavior?",
-      a: "Fine-Tuning",
+      q: "What powers retrieval?",
+      a: "Embeddings",
       explanation:
-        "Specializes model outputs.",
+        "Embeddings enable semantic search.",
       example:
-        "Legal writing style.",
+        "Knowledge retrieval.",
       examTip:
-        "Style change = Fine-Tuning."
+        "Embeddings power RAG."
     },
 
     {
-      q: "Can reason and use tools?",
+      q: "Split documents before embedding",
+      a: "Chunking",
+      explanation:
+        "Improves retrieval quality.",
+      example:
+        "Policy documents.",
+      examTip:
+        "Chunking appears often in RAG questions."
+    },
+
+    {
+      q: "RAG vs Fine-Tuning",
+      a: "RAG retrieves knowledge, Fine-Tuning changes the model.",
+      explanation:
+        "Different solutions for different needs.",
+      example:
+        "Policy updates vs behavior changes.",
+      examTip:
+        "One of the most important exam distinctions."
+    },
+
+    {
+      q: "Information changes frequently",
+      a: "Use RAG",
+      explanation:
+        "Updating documents is easier than retraining.",
+      example:
+        "HR policies.",
+      examTip:
+        "Changing information = RAG."
+    },
+
+    {
+      q: "Need specialized model behavior",
+      a: "Use Fine-Tuning",
+      explanation:
+        "Training modifies model behavior.",
+      example:
+        "Medical terminology.",
+      examTip:
+        "Behavior change = Fine-Tuning."
+    },
+
+    {
+      q: "AI system that uses tools",
       a: "Agent",
       explanation:
-        "Agents can plan and execute actions.",
+        "Agents perform actions and workflows.",
       example:
         "Travel booking assistant.",
       examTip:
-        "Agents perform actions."
+        "Agents can use tools."
     },
 
     {
-      q: "AI safety controls?",
-      a: "Guardrails",
+      q: "What does RLHF stand for?",
+      a: "Reinforcement Learning from Human Feedback",
       explanation:
-        "Restrict unsafe outputs.",
+        "Uses human preferences to improve models.",
       example:
-        "Block PII.",
+        "Chatbot ranking systems.",
       examTip:
-        "Guardrails = Safety."
+        "RLHF improves model alignment."
     }
+
   ],
 
   checks: [
+
     {
-      q: "A company wants answers based on frequently changing internal documents.",
+      q:
+        "Which technique retrieves external information before generating a response?",
+
       options: [
-        "Fine-Tuning",
-        "RAG",
         "Regression",
-        "Classification"
-      ],
-      answer: 1,
-      explanation:
-        "Frequently changing knowledge is best handled with RAG."
-    },
-
-    {
-      q: "A law firm wants a model to generate documents in a specific writing style.",
-      options: [
         "RAG",
-        "Fine-Tuning",
-        "Monitoring",
-        "Clustering"
-      ],
-      answer: 1,
-      explanation:
-        "Style changes require Fine-Tuning."
-    },
-
-    {
-      q: "Which capability is most associated with AI Agents?",
-      options: [
-        "Classification",
-        "Tool Usage",
-        "Regression",
-        "Embedding"
-      ],
-      answer: 1,
-      explanation:
-        "Agents can use tools and execute actions."
-    },
-
-    {
-      q: "What are guardrails used for?",
-      options: [
-        "Training",
-        "Safety",
-        "Deployment",
+        "Clustering",
         "Monitoring"
       ],
-      answer: 1,
-      explanation:
-        "Guardrails provide safety controls."
-    }
-  ],
 
-  scenarios: [
-    {
-      scenario:
-        "An employee asks a chatbot about the latest HR policies. Policies change monthly.",
-      options: [
-        "Fine-Tuning",
-        "RAG",
-        "Regression",
-        "Clustering"
-      ],
       answer: 1,
+
       explanation:
-        "Current and changing knowledge is a RAG use case."
+        "RAG retrieves information before generation."
     },
 
     {
-      scenario:
-        "A company wants generated contracts to match its legal writing style.",
+      q:
+        "Which technique changes model weights?",
+
       options: [
         "Fine-Tuning",
         "RAG",
+        "Vector Search",
+        "Chunking"
+      ],
+
+      answer: 0,
+
+      explanation:
+        "Fine-Tuning modifies the model."
+    },
+
+    {
+      q:
+        "What is typically stored in a Knowledge Base?",
+
+      options: [
+        "Training hardware",
+        "Company documents",
+        "IAM policies only",
+        "CloudWatch metrics"
+      ],
+
+      answer: 1,
+
+      explanation:
+        "Knowledge bases contain retrievable information."
+    },
+
+    {
+      q:
+        "Which concept helps reduce hallucinations by retrieving trusted information?",
+
+      options: [
+        "Regression",
+        "RAG",
+        "Clustering",
+        "Monitoring"
+      ],
+
+      answer: 1,
+
+      explanation:
+        "RAG provides trusted context."
+    },
+
+    {
+      q:
+        "Which AI system can plan actions and use tools?",
+
+      options: [
+        "Agent",
+        "Embedding",
+        "Vector",
+        "Classifier"
+      ],
+
+      answer: 0,
+
+      explanation:
+        "Agents perform multi-step tasks."
+    },
+
+    {
+      q:
+        "What does RLHF use?",
+
+      options: [
+        "Human Feedback",
+        "CloudTrail",
         "Monitoring",
         "Embeddings"
       ],
+
       answer: 0,
+
       explanation:
-        "Writing style customization is Fine-Tuning."
+        "RLHF uses human preferences."
+    }
+
+  ],
+
+  scenarios: [
+
+    {
+      scenario:
+        "A company updates its HR policies every week and wants chatbot answers based on the latest documents.",
+
+      options: [
+        "RAG",
+        "Fine-Tuning",
+        "Regression",
+        "Classification"
+      ],
+
+      answer: 0,
+
+      explanation:
+        "RAG allows updated documents without retraining."
     },
 
     {
       scenario:
-        "A travel assistant searches flights, compares options, and books tickets.",
+        "A company wants an LLM to consistently write in a specialized legal style.",
+
       options: [
-        "Agent",
-        "Classification",
-        "Embedding",
+        "Fine-Tuning",
+        "RAG",
+        "Chunking",
         "Monitoring"
       ],
+
       answer: 0,
+
       explanation:
-        "Agents can reason, plan, and take actions."
+        "Behavior changes usually require Fine-Tuning."
+    },
+
+    {
+      scenario:
+        "A chatbot converts a question into a vector and retrieves similar documents before answering.",
+
+      options: [
+        "RAG Workflow",
+        "Regression",
+        "Classification",
+        "Monitoring"
+      ],
+
+      answer: 0,
+
+      explanation:
+        "This is the standard RAG process."
+    },
+
+    {
+      scenario:
+        "An AI assistant searches a calendar, checks availability, and books a meeting.",
+
+      options: [
+        "Agent",
+        "Embedding",
+        "Vector Search",
+        "Classification"
+      ],
+
+      answer: 0,
+
+      explanation:
+        "Agents can perform actions using tools."
+    },
+
+    {
+      scenario:
+        "A company wants to improve factual accuracy using trusted company documents.",
+
+      options: [
+        "RAG",
+        "Regression",
+        "Clustering",
+        "Monitoring"
+      ],
+
+      answer: 0,
+
+      explanation:
+        "RAG grounds responses using retrieved information."
     }
+
   ]
+
 };

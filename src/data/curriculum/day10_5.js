@@ -3,6 +3,26 @@ export const day10_5 = {
   title:
     "AWS Foundations For AI",
 
+  objectives: [
+
+    "Understand core AWS services frequently referenced in AI workloads",
+
+    "Understand AWS security fundamentals",
+
+    "Understand networking fundamentals",
+
+    "Understand monitoring and auditing",
+
+    "Understand encryption concepts",
+
+    "Understand the Shared Responsibility Model",
+
+    "Understand governance and compliance services",
+
+    "Recognize common CLF-C02 overlap topics that appear in AIF-C01"
+
+  ],
+
   lessons: [
 
     {
@@ -14,12 +34,12 @@ export const day10_5 = {
 
       examples: [
         "Training datasets",
-        "Bedrock knowledge bases",
+        "Bedrock Knowledge Bases",
         "Document storage"
       ],
 
       awsTip:
-        "S3 is the default storage service referenced in many AI and ML workloads."
+        "S3 is the most common storage service referenced in AI workloads."
     },
 
     {
@@ -36,7 +56,7 @@ export const day10_5 = {
       ],
 
       awsTip:
-        "Always follow least privilege access."
+        "Follow the principle of least privilege."
     },
 
     {
@@ -53,40 +73,107 @@ export const day10_5 = {
       ],
 
       awsTip:
-        "KMS manages encryption keys while S3 stores the data."
+        "KMS manages keys, not the data itself."
     },
 
     {
       title:
-        "CloudWatch vs CloudTrail",
+        "Encryption at Rest",
 
       definition:
-        "CloudWatch monitors resources. CloudTrail records API activity.",
+        "Protecting stored data using encryption.",
 
       examples: [
-        "CloudWatch alarms",
-        "CloudTrail audit logs"
+        "Encrypted S3 buckets",
+        "Encrypted databases"
       ],
 
       awsTip:
-        "Monitoring = CloudWatch. Auditing = CloudTrail."
+        "Stored data = Encryption at Rest."
     },
 
     {
       title:
-        "Lambda",
+        "Encryption in Transit",
+
+      definition:
+        "Protecting data while it moves across networks.",
+
+      examples: [
+        "HTTPS",
+        "TLS connections"
+      ],
+
+      awsTip:
+        "Moving data = Encryption in Transit."
+    },
+
+    {
+      title:
+        "CloudWatch",
+
+      definition:
+        "Monitoring service that collects metrics, logs, and alarms.",
+
+      examples: [
+        "CPU monitoring",
+        "Application logs",
+        "Alerts"
+      ],
+
+      awsTip:
+        "Monitoring = CloudWatch."
+    },
+
+    {
+      title:
+        "CloudTrail",
+
+      definition:
+        "Records API activity across AWS accounts.",
+
+      examples: [
+        "Audit logs",
+        "User actions",
+        "Resource changes"
+      ],
+
+      awsTip:
+        "Auditing = CloudTrail."
+    },
+
+    {
+      title:
+        "AWS Lambda",
 
       definition:
         "Serverless compute service that runs code without managing servers.",
 
       examples: [
         "Process uploaded files",
-        "Invoke AI workflows",
-        "Automation"
+        "Automation workflows",
+        "AI triggers"
       ],
 
       awsTip:
-        "No server management required."
+        "No servers to manage."
+    },
+
+    {
+      title:
+        "Amazon EC2",
+
+      definition:
+        "Virtual servers running in AWS.",
+
+      examples: [
+        "Web servers",
+        "ML workloads",
+        "Custom applications"
+      ],
+
+      awsTip:
+        "EC2 provides full operating system control."
     },
 
     {
@@ -102,7 +189,7 @@ export const day10_5 = {
       ],
 
       awsTip:
-        "Need joins? Choose RDS. Need scale and flexibility? Choose DynamoDB."
+        "Need joins? Use RDS. Need scale? Use DynamoDB."
     },
 
     {
@@ -123,6 +210,38 @@ export const day10_5 = {
 
     {
       title:
+        "Security Groups",
+
+      definition:
+        "Virtual firewalls that control inbound and outbound traffic.",
+
+      examples: [
+        "Allow HTTPS",
+        "Restrict database access"
+      ],
+
+      awsTip:
+        "Security Groups control network traffic."
+    },
+
+    {
+      title:
+        "AWS PrivateLink",
+
+      definition:
+        "Provides private connectivity between AWS services without traversing the public internet.",
+
+      examples: [
+        "Private Bedrock access",
+        "Private service communication"
+      ],
+
+      awsTip:
+        "Private connectivity = PrivateLink."
+    },
+
+    {
+      title:
         "Regions and Availability Zones",
 
       definition:
@@ -134,7 +253,7 @@ export const day10_5 = {
       ],
 
       awsTip:
-        "AZs provide high availability within a Region."
+        "Multiple AZs improve availability."
     },
 
     {
@@ -145,12 +264,77 @@ export const day10_5 = {
         "AWS secures the cloud. Customers secure what they run in the cloud.",
 
       examples: [
-        "AWS patches RDS",
-        "Customer patches EC2 OS"
+        "AWS patches managed services",
+        "Customer manages IAM permissions"
       ],
 
       awsTip:
         "Security OF the cloud = AWS. Security IN the cloud = Customer."
+    },
+
+    {
+      title:
+        "AWS Config",
+
+      definition:
+        "Tracks resource configurations and compliance over time.",
+
+      examples: [
+        "Compliance auditing",
+        "Configuration tracking"
+      ],
+
+      awsTip:
+        "Configuration history = AWS Config."
+    },
+
+    {
+      title:
+        "AWS Artifact",
+
+      definition:
+        "Provides compliance reports and agreements.",
+
+      examples: [
+        "SOC reports",
+        "Compliance documentation"
+      ],
+
+      awsTip:
+        "Compliance documents = AWS Artifact."
+    },
+
+    {
+      title:
+        "Trusted Advisor",
+
+      definition:
+        "Provides recommendations for cost optimization, security, reliability, and performance.",
+
+      examples: [
+        "Security checks",
+        "Cost savings"
+      ],
+
+      awsTip:
+        "Best-practice recommendations = Trusted Advisor."
+    },
+
+    {
+      title:
+        "AWS Well-Architected Framework",
+
+      definition:
+        "A framework for designing secure, reliable, efficient, and cost-effective architectures.",
+
+      examples: [
+        "Security",
+        "Reliability",
+        "Cost Optimization"
+      ],
+
+      awsTip:
+        "Frequently referenced in AWS best-practice questions."
     }
 
   ],
@@ -165,9 +349,9 @@ export const day10_5 = {
       explanation:
         "S3 is AWS's primary object storage service.",
       example:
-        "Store PDFs for a Bedrock knowledge base.",
+        "Store PDFs for Bedrock Knowledge Bases.",
       examTip:
-        "Storage questions usually point to S3."
+        "Storage = S3."
     },
 
     {
@@ -178,9 +362,9 @@ export const day10_5 = {
       explanation:
         "IAM manages authentication and authorization.",
       example:
-        "Allow Bedrock access to S3.",
+        "Grant Bedrock access to S3.",
       examTip:
-        "Least privilege is a common exam concept."
+        "Least privilege."
     },
 
     {
@@ -189,22 +373,22 @@ export const day10_5 = {
       a:
         "AWS KMS",
       explanation:
-        "KMS creates and manages cryptographic keys.",
+        "Creates and manages encryption keys.",
       example:
-        "Encrypt training data stored in S3.",
+        "Encrypt S3 data.",
       examTip:
-        "Encryption keys = KMS."
+        "Keys = KMS."
     },
 
     {
       q:
-        "Monitoring or auditing?",
+        "Monitoring vs Auditing",
       a:
         "CloudWatch monitors, CloudTrail audits.",
       explanation:
-        "CloudWatch tracks metrics while CloudTrail records API activity.",
+        "Monitoring and auditing serve different purposes.",
       example:
-        "Track CPU usage vs track who deleted a resource.",
+        "CPU metrics vs API logs.",
       examTip:
         "Monitoring ≠ Auditing."
     },
@@ -215,11 +399,50 @@ export const day10_5 = {
       a:
         "AWS Lambda",
       explanation:
-        "Lambda runs code without managing servers.",
+        "Runs code without managing servers.",
       example:
-        "Process an uploaded document.",
+        "Process uploaded files.",
       examTip:
-        "Serverless questions often point to Lambda."
+        "Serverless = Lambda."
+    },
+
+    {
+      q:
+        "Private cloud network?",
+      a:
+        "VPC",
+      explanation:
+        "Provides network isolation.",
+      example:
+        "Private AI workloads.",
+      examTip:
+        "Network = VPC."
+    },
+
+    {
+      q:
+        "Private service connectivity?",
+      a:
+        "AWS PrivateLink",
+      explanation:
+        "Avoids the public internet.",
+      example:
+        "Private Bedrock access.",
+      examTip:
+        "Private connectivity = PrivateLink."
+    },
+
+    {
+      q:
+        "Compliance reports?",
+      a:
+        "AWS Artifact",
+      explanation:
+        "Provides compliance documentation.",
+      example:
+        "SOC reports.",
+      examTip:
+        "Compliance docs = Artifact."
     }
 
   ],
@@ -264,26 +487,38 @@ export const day10_5 = {
 
     {
       q:
-        "Which database is NoSQL?",
+        "Which AWS service provides private connectivity without using the public internet?",
       options: [
-        "RDS",
-        "Aurora",
-        "DynamoDB",
-        "PostgreSQL"
+        "CloudWatch",
+        "PrivateLink",
+        "IAM",
+        "Artifact"
       ],
-      answer: 2
+      answer: 1
     },
 
     {
       q:
-        "A Region contains:",
+        "Which AWS service provides compliance reports?",
       options: [
-        "One AZ",
-        "Multiple AZs",
-        "One VPC",
-        "One account"
+        "CloudTrail",
+        "Artifact",
+        "Lambda",
+        "S3"
       ],
       answer: 1
+    },
+
+    {
+      q:
+        "Which AWS service tracks configuration compliance over time?",
+      options: [
+        "Config",
+        "S3",
+        "Polly",
+        "Lex"
+      ],
+      answer: 0
     }
 
   ],
@@ -321,7 +556,7 @@ export const day10_5 = {
       answer: 1,
 
       explanation:
-        "CloudTrail records API actions performed in AWS."
+        "CloudTrail records API actions."
     },
 
     {
@@ -338,24 +573,41 @@ export const day10_5 = {
       answer: 2,
 
       explanation:
-        "KMS manages encryption keys used to protect data."
+        "KMS manages encryption keys."
     },
 
     {
       scenario:
-        "A developer wants to run code automatically when a file is uploaded without managing servers.",
+        "A company needs private access to AWS AI services without traversing the public internet.",
 
       options: [
-        "EC2",
+        "PrivateLink",
+        "CloudTrail",
         "Lambda",
-        "RDS",
-        "CloudTrail"
+        "Route 53"
       ],
 
-      answer: 1,
+      answer: 0,
 
       explanation:
-        "Lambda provides serverless execution."
+        "PrivateLink provides private connectivity."
+    },
+
+    {
+      scenario:
+        "A compliance team needs AWS SOC reports and compliance documentation.",
+
+      options: [
+        "Artifact",
+        "CloudWatch",
+        "Config",
+        "Lambda"
+      ],
+
+      answer: 0,
+
+      explanation:
+        "AWS Artifact provides compliance reports."
     }
 
   ]

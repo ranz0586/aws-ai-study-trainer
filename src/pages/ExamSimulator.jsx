@@ -47,7 +47,7 @@ export default function ExamSimulator({
 
     return buildExam(
       questionBank,
-      60
+      65
     );
 
   });

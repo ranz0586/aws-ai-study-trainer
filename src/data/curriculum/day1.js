@@ -1,11 +1,19 @@
 export const day1 = {
+
   title: "AI & ML Foundations",
 
   objectives: [
-    "Understand the relationship between AI, ML, Deep Learning, and Generative AI",
+
+    "Understand the relationship between AI, ML, Deep Learning, Generative AI, and Foundation Models",
+
     "Understand supervised, unsupervised, and reinforcement learning",
+
     "Differentiate classification, regression, and clustering",
+
+    "Understand NLP, Computer Vision, and common AI use cases",
+
     "Recognize AWS exam keywords and common traps"
+
   ],
 
   lessons: [
@@ -52,10 +60,10 @@ export const day1 = {
       title: "Deep Learning",
 
       definition:
-        "A subset of ML that uses neural networks with multiple layers.",
+        "A subset of Machine Learning that uses neural networks with many layers.",
 
       whyItMatters:
-        "Deep learning is commonly used for images, speech, and complex pattern recognition.",
+        "Deep learning powers modern image recognition, speech recognition, and generative AI systems.",
 
       examples: [
         "Image recognition",
@@ -68,6 +76,25 @@ export const day1 = {
     },
 
     {
+      title: "Neural Networks",
+
+      definition:
+        "Computing systems inspired by the structure of the human brain that learn patterns from data.",
+
+      whyItMatters:
+        "Neural networks are the foundation of deep learning models.",
+
+      examples: [
+        "Image recognition",
+        "Speech recognition",
+        "LLMs"
+      ],
+
+      awsTip:
+        "Deep Learning uses neural networks."
+    },
+
+    {
       title: "Generative AI",
 
       definition:
@@ -77,13 +104,88 @@ export const day1 = {
         "Generative AI is a major AWS AIF-C01 exam domain and heavily tested through Amazon Bedrock.",
 
       examples: [
-        "ChatGPT",
         "Claude",
-        "Midjourney"
+        "ChatGPT",
+        "Image generators"
       ],
 
       awsTip:
         "Generative AI creates content. Traditional ML predicts outcomes."
+    },
+
+    {
+      title: "Foundation Models",
+
+      definition:
+        "Large pretrained models trained on massive datasets that can be adapted to many tasks.",
+
+      whyItMatters:
+        "Foundation Models power modern Generative AI applications.",
+
+      examples: [
+        "Claude",
+        "Titan",
+        "Llama"
+      ],
+
+      awsTip:
+        "Foundation Models are broader than LLMs."
+    },
+
+    {
+      title: "Large Language Models (LLMs)",
+
+      definition:
+        "Foundation models specialized for understanding and generating human language.",
+
+      whyItMatters:
+        "LLMs power chatbots, assistants, summarization, and content generation.",
+
+      examples: [
+        "Claude",
+        "ChatGPT"
+      ],
+
+      awsTip:
+        "All LLMs are Foundation Models, but not all Foundation Models are LLMs."
+    },
+
+    {
+      title: "Natural Language Processing (NLP)",
+
+      definition:
+        "AI techniques that allow computers to understand, process, and generate human language.",
+
+      whyItMatters:
+        "NLP powers many AWS AI services.",
+
+      examples: [
+        "Chatbots",
+        "Translation",
+        "Sentiment analysis"
+      ],
+
+      awsTip:
+        "Amazon Comprehend, Lex, and Translate are NLP services."
+    },
+
+    {
+      title: "Computer Vision",
+
+      definition:
+        "AI techniques that allow computers to understand images and video.",
+
+      whyItMatters:
+        "Computer Vision is a common AI use case tested on the exam.",
+
+      examples: [
+        "Object detection",
+        "Face recognition",
+        "Image classification"
+      ],
+
+      awsTip:
+        "Amazon Rekognition is AWS's primary Computer Vision service."
     },
 
     {
@@ -112,7 +214,7 @@ export const day1 = {
         "Machine learning that uses unlabeled data.",
 
       whyItMatters:
-        "Used to discover patterns that humans have not labeled.",
+        "Used to discover hidden patterns in data.",
 
       examples: [
         "Customer segmentation",
@@ -199,9 +301,21 @@ export const day1 = {
       awsTip:
         "Grouping without labels = Clustering."
     }
+
   ],
 
   flashcards: [
+
+    {
+      q: "What is the broadest AI category?",
+      a: "Artificial Intelligence",
+      explanation:
+        "AI is the umbrella category that includes ML and Generative AI.",
+      example:
+        "Virtual assistants.",
+      examTip:
+        "AI contains ML."
+    },
 
     {
       q: "Which learning type uses labeled data?",
@@ -256,7 +370,52 @@ export const day1 = {
         "Customer segmentation.",
       examTip:
         "Grouping = Clustering."
+    },
+
+    {
+      q: "What powers Deep Learning?",
+      a: "Neural Networks",
+      explanation:
+        "Deep learning uses neural networks with many layers.",
+      example:
+        "Image recognition.",
+      examTip:
+        "Neural Networks → Deep Learning."
+    },
+
+    {
+      q: "AI that understands language?",
+      a: "Natural Language Processing (NLP)",
+      explanation:
+        "NLP works with text and speech.",
+      example:
+        "Chatbots and translation.",
+      examTip:
+        "Language = NLP."
+    },
+
+    {
+      q: "AI that understands images?",
+      a: "Computer Vision",
+      explanation:
+        "Computer Vision analyzes images and video.",
+      example:
+        "Face detection.",
+      examTip:
+        "Images = Computer Vision."
+    },
+
+    {
+      q: "Foundation model specialized for text?",
+      a: "LLM",
+      explanation:
+        "Large Language Models are Foundation Models focused on language.",
+      example:
+        "Claude.",
+      examTip:
+        "LLM ⊂ Foundation Model."
     }
+
   ],
 
   checks: [
@@ -327,7 +486,42 @@ export const day1 = {
 
       explanation:
         "Rewards and penalties indicate Reinforcement Learning."
+    },
+
+    {
+      q:
+        "Which AI field focuses on understanding text and speech?",
+
+      options: [
+        "Computer Vision",
+        "NLP",
+        "Regression",
+        "Clustering"
+      ],
+
+      answer: 1,
+
+      explanation:
+        "NLP works with human language."
+    },
+
+    {
+      q:
+        "Which AWS service is commonly used for image recognition?",
+
+      options: [
+        "Comprehend",
+        "Lex",
+        "Rekognition",
+        "Translate"
+      ],
+
+      answer: 2,
+
+      explanation:
+        "Amazon Rekognition provides computer vision capabilities."
     }
+
   ],
 
   scenarios: [
@@ -381,6 +575,25 @@ export const day1 = {
 
       explanation:
         "Learning through rewards is reinforcement learning."
+    },
+
+    {
+      scenario:
+        "A company wants to automatically identify objects in uploaded images.",
+
+      options: [
+        "Computer Vision",
+        "Regression",
+        "Clustering",
+        "Reinforcement Learning"
+      ],
+
+      answer: 0,
+
+      explanation:
+        "Image analysis is a computer vision task."
     }
+
   ]
+
 };

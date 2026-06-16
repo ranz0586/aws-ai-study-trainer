@@ -172,7 +172,8 @@ export default function Dashboard({
               key={day.day}
               {...day}
               unlocked={
-                day.day === 10.5 ||
+                 day.day === 10 ||
+                 day.day === 10.5 ||
                 day.day <=
                   progress.currentDay
               }

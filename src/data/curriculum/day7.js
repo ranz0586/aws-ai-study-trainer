@@ -1,305 +1,618 @@
 export const day7 = {
+
   title: "Amazon Bedrock",
 
   objectives: [
+
     "Understand Amazon Bedrock",
+
     "Understand Foundation Models in Bedrock",
-    "Understand Knowledge Bases",
-    "Understand Bedrock Guardrails",
+
+    "Understand model selection",
+
+    "Understand inference",
+
+    "Understand Bedrock Knowledge Bases",
+
     "Understand Bedrock Agents",
-    "Recognize Bedrock exam scenarios"
+
+    "Understand Guardrails",
+
+    "Understand model customization",
+
+    "Understand Prompt Management",
+
+    "Understand Bedrock evaluation capabilities"
+
   ],
 
   lessons: [
+
     {
-      title: "What is Amazon Bedrock?",
+      title: "Amazon Bedrock",
+
       definition:
-        "AWS managed service for foundation models.",
+        "A fully managed AWS service that provides access to Foundation Models through a unified API.",
+
       whyItMatters:
-        "The most important GenAI service for the AWS AI Practitioner exam.",
+        "Bedrock is the primary Generative AI service on AWS.",
+
+      examples: [
+        "Claude",
+        "Titan",
+        "Llama",
+        "Mistral"
+      ],
+
+      awsTip:
+        "Bedrock = Foundation Models as a managed AWS service."
+    },
+
+    {
+      title: "Foundation Models",
+
+      definition:
+        "Large pretrained models capable of performing many tasks without task-specific training.",
+
+      whyItMatters:
+        "Foundation Models power modern Generative AI applications.",
+
       examples: [
         "Claude",
         "Titan",
         "Llama"
       ],
+
       awsTip:
-        "GenAI on AWS usually means Bedrock."
+        "Bedrock provides access to multiple Foundation Models."
     },
 
     {
-      title: "Managed Foundation Models",
+      title: "Single API Access",
+
       definition:
-        "Bedrock provides access to multiple foundation models through a single service.",
+        "Bedrock provides one consistent API for multiple model providers.",
+
       whyItMatters:
-        "Avoids managing infrastructure.",
+        "Developers can switch models without major application changes.",
+
       examples: [
-        "Anthropic Claude",
-        "Meta Llama",
-        "Amazon Titan"
+        "Claude to Titan",
+        "Titan to Llama"
       ],
+
       awsTip:
-        "Bedrock offers model choice."
+        "One API, many Foundation Models."
     },
 
     {
-      title: "Amazon Titan Models",
+      title: "Model Selection",
+
       definition:
-        "Amazon's family of foundation models.",
+        "Choosing the most appropriate Foundation Model for a use case.",
+
       whyItMatters:
-        "Provides text generation and embeddings.",
+        "Different models have different strengths, costs, and capabilities.",
+
       examples: [
-        "Titan Text",
-        "Titan Embeddings"
+        "Chatbots",
+        "Summarization",
+        "Code generation"
       ],
+
       awsTip:
-        "Titan Embeddings appear in RAG questions."
+        "AWS often tests model selection scenarios."
+    },
+
+    {
+      title: "Inference",
+
+      definition:
+        "Using a trained model to generate outputs.",
+
+      whyItMatters:
+        "Most Bedrock usage involves inference.",
+
+      examples: [
+        "Chat responses",
+        "Image generation",
+        "Summaries"
+      ],
+
+      awsTip:
+        "Training teaches. Inference answers."
+    },
+
+    {
+      title: "Prompt Management",
+
+      definition:
+        "A Bedrock capability for storing and managing reusable prompts.",
+
+      whyItMatters:
+        "Improves consistency and governance.",
+
+      examples: [
+        "Customer support prompts",
+        "Summarization templates"
+      ],
+
+      awsTip:
+        "Prompt Management standardizes prompt usage."
     },
 
     {
       title: "Knowledge Bases",
-      definition:
-        "Managed retrieval solution for RAG within Bedrock.",
-      whyItMatters:
-        "Simplifies retrieval workflows.",
-      examples: [
-        "Document search",
-        "Policy retrieval"
-      ],
-      awsTip:
-        "Knowledge Bases = Managed RAG."
-    },
 
-    {
-      title: "Knowledge Base Workflow",
       definition:
-        "Ingest documents → Create embeddings → Retrieve relevant content.",
+        "Managed retrieval systems that connect Foundation Models to external data.",
+
       whyItMatters:
-        "Supports enterprise knowledge systems.",
+        "Simplifies RAG implementations.",
+
       examples: [
         "Internal documentation",
-        "Support articles"
+        "Policy repositories"
       ],
-      awsTip:
-        "Knowledge Bases automatically manage retrieval."
-    },
 
-    {
-      title: "Bedrock Guardrails",
-      definition:
-        "Safety controls built into Bedrock.",
-      whyItMatters:
-        "Protects users and organizations.",
-      examples: [
-        "Content filtering",
-        "PII filtering",
-        "Topic restrictions"
-      ],
       awsTip:
-        "Guardrails enforce safe AI behavior."
+        "Knowledge Bases enable RAG in Bedrock."
     },
 
     {
       title: "Bedrock Agents",
+
       definition:
-        "Managed agent capability within Bedrock.",
+        "Agents that plan actions and interact with tools to accomplish goals.",
+
       whyItMatters:
-        "Supports task automation.",
+        "Agents automate multi-step workflows.",
+
       examples: [
-        "Customer service",
-        "Travel planning",
-        "Workflow execution"
+        "Travel assistants",
+        "Support assistants",
+        "Research assistants"
       ],
+
       awsTip:
-        "Bedrock Agents automate tasks."
+        "Agents can invoke tools and APIs."
+    },
+
+    {
+      title: "Action Groups",
+
+      definition:
+        "External capabilities that Bedrock Agents can invoke.",
+
+      whyItMatters:
+        "Allows agents to interact with systems beyond the model.",
+
+      examples: [
+        "Database lookups",
+        "Calendar scheduling",
+        "API calls"
+      ],
+
+      awsTip:
+        "Action Groups extend agent capabilities."
+    },
+
+    {
+      title: "Guardrails",
+
+      definition:
+        "Safety controls that help enforce policies and reduce harmful outputs.",
+
+      whyItMatters:
+        "Responsible AI is a major exam domain.",
+
+      examples: [
+        "Content filtering",
+        "Blocked topics",
+        "Safety controls"
+      ],
+
+      awsTip:
+        "Guardrails improve safety and compliance."
+    },
+
+    {
+      title: "Model Customization",
+
+      definition:
+        "Adapting Foundation Models for specific business needs.",
+
+      whyItMatters:
+        "Organizations often require specialized behavior.",
+
+      examples: [
+        "Industry-specific assistants",
+        "Custom workflows"
+      ],
+
+      awsTip:
+        "Customization changes model behavior."
+    },
+
+    {
+      title: "Fine-Tuning",
+
+      definition:
+        "Additional training using organization-specific data.",
+
+      whyItMatters:
+        "Improves specialized performance.",
+
+      examples: [
+        "Legal assistant",
+        "Medical assistant"
+      ],
+
+      awsTip:
+        "Fine-Tuning modifies model weights."
+    },
+
+    {
+      title: "Continued Pretraining",
+
+      definition:
+        "Additional training using domain-specific datasets.",
+
+      whyItMatters:
+        "Expands model knowledge.",
+
+      examples: [
+        "Industry datasets",
+        "Internal content"
+      ],
+
+      awsTip:
+        "Continued pretraining updates knowledge."
     },
 
     {
       title: "Model Evaluation",
+
       definition:
-        "Comparing foundation models.",
+        "Comparing Foundation Models using quality and performance metrics.",
+
       whyItMatters:
-        "Different models have different strengths.",
+        "Helps organizations choose the best model.",
+
       examples: [
-        "Accuracy",
-        "Safety",
-        "Cost",
-        "Latency"
+        "Accuracy comparison",
+        "Cost comparison",
+        "Latency comparison"
       ],
+
       awsTip:
-        "Evaluation compares model performance."
+        "Evaluate before selecting a model."
     },
 
     {
-      title: "Cost Considerations",
+      title: "Bedrock Studio",
+
       definition:
-        "Different models have different operational costs.",
+        "Visual environment for experimenting with Foundation Models.",
+
       whyItMatters:
-        "Model selection impacts budget.",
+        "Allows testing without building applications.",
+
       examples: [
-        "Token pricing",
-        "Inference costs"
+        "Prompt testing",
+        "Model comparisons"
       ],
+
       awsTip:
-        "Cost is often part of model evaluation."
+        "Studio helps prototype quickly."
     },
 
     {
-      title: "Bedrock Exam Pattern",
+      title: "Model Lifecycle",
+
       definition:
-        "Many GenAI AWS exam questions have Bedrock as the answer.",
+        "The availability state of a Foundation Model over time.",
+
       whyItMatters:
-        "High-value exam topic.",
+        "Models can become deprecated or replaced.",
+
       examples: [
-        "Managed foundation models",
-        "Managed RAG",
-        "Agents"
+        "Active",
+        "Legacy",
+        "Retired"
       ],
+
       awsTip:
-        "When unsure about GenAI on AWS, consider Bedrock."
+        "AWS may test lifecycle terminology conceptually."
     }
+
   ],
 
   flashcards: [
+
     {
-      q: "Primary GenAI AWS service",
+      q: "AWS managed Foundation Model platform",
       a: "Amazon Bedrock",
       explanation:
-        "Managed service for foundation models.",
+        "Provides access to multiple Foundation Models.",
       example:
-        "Claude and Titan access.",
+        "Claude and Titan.",
       examTip:
-        "Most important AWS GenAI service."
+        "Generative AI on AWS = Bedrock."
     },
 
     {
-      q: "Managed RAG in Bedrock",
+      q: "What uses a trained model?",
+      a: "Inference",
+      explanation:
+        "Inference generates outputs.",
+      example:
+        "Chatbot responses.",
+      examTip:
+        "Training learns. Inference answers."
+    },
+
+    {
+      q: "Managed RAG capability",
       a: "Knowledge Bases",
       explanation:
-        "Provides retrieval capabilities.",
+        "Connects models to external data.",
       example:
-        "Document search.",
+        "Internal documentation.",
       examTip:
-        "Knowledge Bases = Managed RAG."
+        "Knowledge Bases simplify RAG."
     },
 
     {
-      q: "Bedrock safety controls",
+      q: "AI system that can use tools",
+      a: "Agent",
+      explanation:
+        "Agents execute workflows.",
+      example:
+        "Booking assistants.",
+      examTip:
+        "Agents can invoke actions."
+    },
+
+    {
+      q: "Safety controls in Bedrock",
       a: "Guardrails",
       explanation:
-        "Filters unsafe content.",
+        "Reduce unsafe outputs.",
       example:
-        "PII blocking.",
+        "Content filtering.",
       examTip:
-        "Guardrails = Safety."
+        "Guardrails improve safety."
     },
 
     {
-      q: "Managed task automation",
-      a: "Bedrock Agents",
+      q: "Reusable prompts in Bedrock",
+      a: "Prompt Management",
       explanation:
-        "Agents automate workflows.",
+        "Stores standardized prompts.",
       example:
-        "Travel booking assistant.",
+        "Support templates.",
       examTip:
-        "Agents perform actions."
+        "Prompt consistency."
+    },
+
+    {
+      q: "Additional model training",
+      a: "Fine-Tuning",
+      explanation:
+        "Specializes a Foundation Model.",
+      example:
+        "Medical assistant.",
+      examTip:
+        "Changes model behavior."
+    },
+
+    {
+      q: "Visual Bedrock testing environment",
+      a: "Bedrock Studio",
+      explanation:
+        "Experiment with models visually.",
+      example:
+        "Prompt testing.",
+      examTip:
+        "Studio for experimentation."
     }
+
   ],
 
   checks: [
+
     {
-      q: "Which AWS service provides managed access to foundation models?",
+      q:
+        "Which AWS service provides access to multiple Foundation Models?",
+
       options: [
-        "SageMaker",
-        "CloudTrail",
-        "Amazon Bedrock",
-        "IAM"
+        "Bedrock",
+        "Textract",
+        "Translate",
+        "Macie"
       ],
-      answer: 2,
+
+      answer: 0,
+
       explanation:
-        "Bedrock is AWS's GenAI platform."
+        "Amazon Bedrock provides Foundation Models through a managed platform."
     },
 
     {
-      q: "What Bedrock feature provides managed RAG?",
+      q:
+        "Which Bedrock capability simplifies Retrieval-Augmented Generation?",
+
       options: [
-        "Agents",
         "Knowledge Bases",
-        "CloudTrail",
-        "KMS"
-      ],
-      answer: 1,
-      explanation:
-        "Knowledge Bases provide retrieval capabilities."
-    },
-
-    {
-      q: "What feature blocks unsafe content?",
-      options: [
-        "Embeddings",
         "Guardrails",
-        "Evaluation",
-        "Monitoring"
+        "Polly",
+        "Translate"
       ],
-      answer: 1,
+
+      answer: 0,
+
       explanation:
-        "Guardrails provide safety controls."
+        "Knowledge Bases provide managed retrieval."
     },
 
     {
-      q: "What metric may be used during model evaluation?",
+      q:
+        "Which Bedrock feature helps reduce unsafe outputs?",
+
       options: [
-        "Latency",
-        "Accuracy",
-        "Cost",
-        "All of the Above"
+        "Guardrails",
+        "Lex",
+        "Comprehend",
+        "OpenSearch"
       ],
-      answer: 3,
+
+      answer: 0,
+
       explanation:
-        "All are evaluation criteria."
+        "Guardrails enforce safety controls."
+    },
+
+    {
+      q:
+        "What is the primary purpose of inference?",
+
+      options: [
+        "Generate outputs",
+        "Train models",
+        "Store vectors",
+        "Monitor drift"
+      ],
+
+      answer: 0,
+
+      explanation:
+        "Inference uses trained models to generate responses."
+    },
+
+    {
+      q:
+        "Which Bedrock capability stores reusable prompts?",
+
+      options: [
+        "Prompt Management",
+        "Guardrails",
+        "Knowledge Bases",
+        "A2I"
+      ],
+
+      answer: 0,
+
+      explanation:
+        "Prompt Management standardizes prompt usage."
+    },
+
+    {
+      q:
+        "Which capability allows Bedrock Agents to interact with external systems?",
+
+      options: [
+        "Action Groups",
+        "Embeddings",
+        "Chunking",
+        "Vectors"
+      ],
+
+      answer: 0,
+
+      explanation:
+        "Action Groups connect agents to tools and APIs."
     }
+
   ],
 
   scenarios: [
+
     {
       scenario:
-        "A company wants access to Claude and Llama models without managing infrastructure.",
+        "A company wants to switch between Claude and Titan without rewriting application code.",
+
       options: [
         "Amazon Bedrock",
-        "CloudTrail",
-        "KMS",
-        "IAM"
+        "Textract",
+        "Macie",
+        "Forecast"
       ],
+
       answer: 0,
+
       explanation:
-        "Bedrock provides managed foundation models."
+        "Bedrock provides a unified API across models."
     },
 
     {
       scenario:
-        "A company wants a chatbot that answers questions from uploaded internal documents.",
+        "A support chatbot needs answers based on company documentation.",
+
       options: [
         "Knowledge Bases",
-        "CloudTrail",
         "Translate",
-        "Polly"
+        "Polly",
+        "Forecast"
       ],
+
       answer: 0,
+
       explanation:
         "Knowledge Bases provide managed retrieval."
     },
 
     {
       scenario:
-        "A company must prevent AI responses from exposing personal information.",
+        "An AI assistant needs to check a database before answering a question.",
+
+      options: [
+        "Agent with Action Groups",
+        "Embedding",
+        "Regression",
+        "Classification"
+      ],
+
+      answer: 0,
+
+      explanation:
+        "Agents use Action Groups to interact with external systems."
+    },
+
+    {
+      scenario:
+        "A company wants to prevent harmful responses from a Foundation Model.",
+
       options: [
         "Guardrails",
-        "Embeddings",
-        "Regression",
-        "Monitoring"
+        "Chunking",
+        "Embedding",
+        "OpenSearch"
       ],
+
       answer: 0,
+
       explanation:
-        "Guardrails provide content safety controls."
+        "Guardrails enforce safety policies."
+    },
+
+    {
+      scenario:
+        "A legal firm wants a Foundation Model specialized in legal terminology.",
+
+      options: [
+        "Fine-Tuning",
+        "Translate",
+        "Lex",
+        "Polly"
+      ],
+
+      answer: 0,
+
+      explanation:
+        "Fine-Tuning specializes model behavior."
     }
+
   ]
+
 };
