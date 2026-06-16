@@ -1,5 +1,4 @@
 import {
-  useMemo,
   useState
 }
 from "react";
@@ -31,32 +30,27 @@ export default function ExamSimulator({
   domainScores = {}
 }) {
 
-  const questions =
-    useMemo(
-      () => {
+  const [
+    questions
+  ] = useState(() => {
 
-        if (
-          adaptive
-        ) {
+    if (
+      adaptive
+    ) {
 
-          return buildAdaptiveExam({
-            domainScores,
-            count: 60
-          });
+      return buildAdaptiveExam({
+        domainScores,
+        count: 60
+      });
 
-        }
+    }
 
-        return buildExam(
-          questionBank,
-          60
-        );
-
-      },
-      [
-        adaptive,
-        domainScores
-      ]
+    return buildExam(
+      questionBank,
+      60
     );
+
+  });
 
   const [
     answers,
