@@ -1,14 +1,9 @@
 import { useState } from "react";
 
-export default function ScenarioQuestion({
-  item,
-  onResult
-}) {
-  const [answered, setAnswered] =
-    useState(false);
+export default function ScenarioQuestion({ item, onResult }) {
+  const [answered, setAnswered] = useState(false);
 
-  const [selected, setSelected] =
-    useState(null);
+  const [selected, setSelected] = useState(null);
 
   const choose = (index) => {
     if (answered) return;
@@ -16,13 +11,10 @@ export default function ScenarioQuestion({
     setAnswered(true);
     setSelected(index);
 
-    onResult?.(
-      index === item.answer
-    );
+    onResult?.(index === item.answer);
   };
 
-  const isCorrect =
-    selected === item.answer;
+  const isCorrect = selected === item.answer;
 
   return (
     <div
@@ -37,35 +29,29 @@ export default function ScenarioQuestion({
 
       <p>{item.scenario}</p>
 
-      {item.options.map(
-        (option, index) => (
-          <button
-            key={index}
-            onClick={() =>
-              choose(index)
-            }
-            disabled={answered}
-            style={{
-              display: "block",
-              width: "100%",
-              textAlign: "left",
-              marginBottom: 8,
-              padding: 10,
+      {item.options.map((option, index) => (
+        <button
+          key={index}
+          onClick={() => choose(index)}
+          disabled={answered}
+          style={{
+            display: "block",
+            width: "100%",
+            textAlign: "left",
+            marginBottom: 8,
+            padding: 10,
 
-              background:
-                answered &&
-                index === item.answer
-                  ? "#dcfce7"
-                  : answered &&
-                    index === selected
+            background:
+              answered && index === item.answer
+                ? "#dcfce7"
+                : answered && index === selected
                   ? "#fee2e2"
                   : "white"
-            }}
-          >
-            {option}
-          </button>
-        )
-      )}
+          }}
+        >
+          {option}
+        </button>
+      ))}
 
       {answered && (
         <div
@@ -93,22 +79,10 @@ export default function ScenarioQuestion({
             </p>
           )}
 
-          <p>
-            Correct Answer:
-            {" "}
-            {
-              item.options[
-                item.answer
-              ]
-            }
-          </p>
+          <p>Correct Answer: {item.options[item.answer]}</p>
 
           <p>
-            <strong>
-              Explanation:
-            </strong>
-            {" "}
-            {item.explanation}
+            <strong>Explanation:</strong> {item.explanation}
           </p>
         </div>
       )}

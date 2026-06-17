@@ -1,16 +1,10 @@
-export default function WeakDomainTrend({
-  domain,
-  history
-}) {
-
+export default function WeakDomainTrend({ domain, history }) {
   return (
     <div
       style={{
-        background:
-          "white",
+        background: "white",
 
-        border:
-          "1px solid #ddd",
+        border: "1px solid #ddd",
 
         borderRadius: 12,
 
@@ -19,26 +13,15 @@ export default function WeakDomainTrend({
         marginBottom: 12
       }}
     >
-      <h3>
-        {domain}
-      </h3>
+      <h3>{domain}</h3>
 
-      {history.map(
-        item => (
-          <div
-            key={
-              item.date
-            }
-          >
-            {item.date}
-            {" - "}
-            {
-              item.score
-            }
-            %
-          </div>
-        )
-      )}
+      {history.map((item) => (
+        <div key={item.date}>
+          {item.date}
+          {" - "}
+          {item.score}%
+        </div>
+      ))}
     </div>
   );
 }

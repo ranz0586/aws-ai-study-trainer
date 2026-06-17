@@ -1,15 +1,10 @@
-export default function WeakTopicCard({
-  topic,
-  score
-}) {
+export default function WeakTopicCard({ topic, score }) {
   return (
     <div
       style={{
-        background:
-          "#fee2e2",
+        background: "#fee2e2",
 
-        border:
-          "1px solid #fecaca",
+        border: "1px solid #fecaca",
 
         borderRadius: 12,
 
@@ -18,20 +13,11 @@ export default function WeakTopicCard({
         marginBottom: 12
       }}
     >
-      <h3>
-        {topic}
-      </h3>
+      <h3>{topic}</h3>
 
-      <strong>
-        Score:
-        {" "}
-        {score}%
-      </strong>
+      <strong>Score: {score}%</strong>
 
-      <p>
-        Recommended Review
-        Required
-      </p>
+      <p>Recommended Review Required</p>
     </div>
   );
 }

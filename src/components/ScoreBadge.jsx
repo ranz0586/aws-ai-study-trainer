@@ -1,11 +1,7 @@
-export default function ScoreBadge({
-  score
-}) {
-  let bg =
-    "#fef3c7";
+export default function ScoreBadge({ score }) {
+  let bg = "#fef3c7";
 
-  let color =
-    "#92400e";
+  let color = "#92400e";
 
   if (score >= 70) {
     bg = "#dcfce7";
@@ -19,8 +15,7 @@ export default function ScoreBadge({
 
         color,
 
-        padding:
-          "8px 12px",
+        padding: "8px 12px",
 
         borderRadius: 999,
 

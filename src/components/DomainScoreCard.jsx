@@ -1,21 +1,12 @@
-export default function DomainScoreCard({
-  domain,
-  score
-}) {
-
-  const color =
-    score >= 70
-      ? "var(--success)"
-      : "var(--danger)";
+export default function DomainScoreCard({ domain, score }) {
+  const color = score >= 70 ? "var(--success)" : "var(--danger)";
 
   return (
     <div
       style={{
-        background:
-          "var(--surface)",
+        background: "var(--surface)",
 
-        border:
-          "1px solid var(--border)",
+        border: "1px solid var(--border)",
 
         borderRadius: 12,
 
@@ -24,9 +15,7 @@ export default function DomainScoreCard({
         marginBottom: 12
       }}
     >
-      <h3>
-        {domain}
-      </h3>
+      <h3>{domain}</h3>
 
       <strong
         style={{

@@ -1,14 +1,9 @@
 import { useState } from "react";
 
-export default function KnowledgeCheck({
-  item,
-  onResult
-}) {
-  const [answered, setAnswered] =
-    useState(false);
+export default function KnowledgeCheck({ item, onResult }) {
+  const [answered, setAnswered] = useState(false);
 
-  const [selected, setSelected] =
-    useState(null);
+  const [selected, setSelected] = useState(null);
 
   const choose = (index) => {
     if (answered) return;
@@ -16,13 +11,10 @@ export default function KnowledgeCheck({
     setAnswered(true);
     setSelected(index);
 
-    onResult?.(
-      index === item.answer
-    );
+    onResult?.(index === item.answer);
   };
 
-  const isCorrect =
-    selected === item.answer;
+  const isCorrect = selected === item.answer;
 
   return (
     <div
@@ -35,35 +27,29 @@ export default function KnowledgeCheck({
     >
       <h4>{item.q}</h4>
 
-      {item.options.map(
-        (option, index) => (
-          <button
-            key={index}
-            onClick={() =>
-              choose(index)
-            }
-            disabled={answered}
-            style={{
-              display: "block",
-              marginBottom: 8,
-              width: "100%",
-              textAlign: "left",
-              padding: 10,
+      {item.options.map((option, index) => (
+        <button
+          key={index}
+          onClick={() => choose(index)}
+          disabled={answered}
+          style={{
+            display: "block",
+            marginBottom: 8,
+            width: "100%",
+            textAlign: "left",
+            padding: 10,
 
-              background:
-                answered &&
-                index === item.answer
-                  ? "#dcfce7"
-                  : answered &&
-                    index === selected
+            background:
+              answered && index === item.answer
+                ? "#dcfce7"
+                : answered && index === selected
                   ? "#fee2e2"
                   : "white"
-            }}
-          >
-            {option}
-          </button>
-        )
-      )}
+          }}
+        >
+          {option}
+        </button>
+      ))}
 
       {answered && (
         <div
@@ -91,15 +77,7 @@ export default function KnowledgeCheck({
             </p>
           )}
 
-          <p>
-            Correct Answer:
-            {" "}
-            {
-              item.options[
-                item.answer
-              ]
-            }
-          </p>
+          <p>Correct Answer: {item.options[item.answer]}</p>
         </div>
       )}
     </div>

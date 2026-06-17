@@ -1,9 +1,7 @@
 export const day8 = {
-
   title: "AWS AI Services",
 
   objectives: [
-
     "Identify AWS AI and ML services",
 
     "Match business problems to AWS services",
@@ -15,38 +13,27 @@ export const day8 = {
     "Understand managed AI service use cases",
 
     "Recognize service selection exam patterns"
-
   ],
 
   lessons: [
-
     {
       title: "Amazon Textract",
 
-      definition:
-        "Extracts text, forms, and tables from documents.",
+      definition: "Extracts text, forms, and tables from documents.",
 
-      whyItMatters:
-        "Frequently tested OCR service.",
+      whyItMatters: "Frequently tested OCR service.",
 
-      examples: [
-        "Invoices",
-        "Receipts",
-        "PDF forms"
-      ],
+      examples: ["Invoices", "Receipts", "PDF forms"],
 
-      awsTip:
-        "OCR documents = Textract."
+      awsTip: "OCR documents = Textract."
     },
 
     {
       title: "Amazon Comprehend",
 
-      definition:
-        "Natural Language Processing service.",
+      definition: "Natural Language Processing service.",
 
-      whyItMatters:
-        "Analyzes text and extracts meaning.",
+      whyItMatters: "Analyzes text and extracts meaning.",
 
       examples: [
         "Sentiment analysis",
@@ -54,262 +41,175 @@ export const day8 = {
         "Topic classification"
       ],
 
-      awsTip:
-        "Text understanding = Comprehend."
+      awsTip: "Text understanding = Comprehend."
     },
 
     {
       title: "Amazon Rekognition",
 
-      definition:
-        "Image and video analysis service.",
+      definition: "Image and video analysis service.",
 
-      whyItMatters:
-        "Primary AWS computer vision service.",
+      whyItMatters: "Primary AWS computer vision service.",
 
-      examples: [
-        "Object detection",
-        "Face analysis",
-        "Content moderation"
-      ],
+      examples: ["Object detection", "Face analysis", "Content moderation"],
 
-      awsTip:
-        "Images and video = Rekognition."
+      awsTip: "Images and video = Rekognition."
     },
 
     {
       title: "Amazon Lex",
 
-      definition:
-        "Service for building conversational chatbots.",
+      definition: "Service for building conversational chatbots.",
 
-      whyItMatters:
-        "Frequently appears in chatbot questions.",
+      whyItMatters: "Frequently appears in chatbot questions.",
 
-      examples: [
-        "Support bots",
-        "Virtual assistants"
-      ],
+      examples: ["Support bots", "Virtual assistants"],
 
-      awsTip:
-        "Chatbots = Lex."
+      awsTip: "Chatbots = Lex."
     },
 
     {
       title: "Amazon Polly",
 
-      definition:
-        "Converts text into natural speech.",
+      definition: "Converts text into natural speech.",
 
-      whyItMatters:
-        "Text-to-speech service.",
+      whyItMatters: "Text-to-speech service.",
 
-      examples: [
-        "Narration",
-        "Accessibility"
-      ],
+      examples: ["Narration", "Accessibility"],
 
-      awsTip:
-        "Text → Speech = Polly."
+      awsTip: "Text → Speech = Polly."
     },
 
     {
       title: "Amazon Transcribe",
 
-      definition:
-        "Converts speech into text.",
+      definition: "Converts speech into text.",
 
-      whyItMatters:
-        "Speech-to-text service.",
+      whyItMatters: "Speech-to-text service.",
 
-      examples: [
-        "Meeting transcripts",
-        "Call recordings"
-      ],
+      examples: ["Meeting transcripts", "Call recordings"],
 
-      awsTip:
-        "Speech → Text = Transcribe."
+      awsTip: "Speech → Text = Transcribe."
     },
 
     {
       title: "Amazon Translate",
 
-      definition:
-        "Language translation service.",
+      definition: "Language translation service.",
 
-      whyItMatters:
-        "Supports multilingual applications.",
+      whyItMatters: "Supports multilingual applications.",
 
-      examples: [
-        "Website translation",
-        "Customer support"
-      ],
+      examples: ["Website translation", "Customer support"],
 
-      awsTip:
-        "Translation = Translate."
+      awsTip: "Translation = Translate."
     },
 
     {
       title: "Amazon Personalize",
 
-      definition:
-        "Recommendation engine service.",
+      definition: "Recommendation engine service.",
 
-      whyItMatters:
-        "Frequently appears in recommendation scenarios.",
+      whyItMatters: "Frequently appears in recommendation scenarios.",
 
-      examples: [
-        "Product recommendations",
-        "Content recommendations"
-      ],
+      examples: ["Product recommendations", "Content recommendations"],
 
-      awsTip:
-        "Recommendations = Personalize."
+      awsTip: "Recommendations = Personalize."
     },
 
     {
       title: "Amazon Kendra",
 
-      definition:
-        "Enterprise intelligent search service.",
+      definition: "Enterprise intelligent search service.",
 
-      whyItMatters:
-        "Designed for enterprise document search.",
+      whyItMatters: "Designed for enterprise document search.",
 
-      examples: [
-        "Internal search",
-        "Knowledge discovery"
-      ],
+      examples: ["Internal search", "Knowledge discovery"],
 
-      awsTip:
-        "Enterprise search = Kendra."
+      awsTip: "Enterprise search = Kendra."
     },
 
     {
       title: "Amazon Fraud Detector",
 
-      definition:
-        "Managed fraud detection service.",
+      definition: "Managed fraud detection service.",
 
-      whyItMatters:
-        "Common AWS AI service question.",
+      whyItMatters: "Common AWS AI service question.",
 
-      examples: [
-        "Payment fraud",
-        "Account fraud"
-      ],
+      examples: ["Payment fraud", "Account fraud"],
 
-      awsTip:
-        "Fraud detection = Fraud Detector."
+      awsTip: "Fraud detection = Fraud Detector."
     },
 
     {
       title: "Amazon Augmented AI (A2I)",
 
-      definition:
-        "Human review workflows for ML predictions.",
+      definition: "Human review workflows for ML predictions.",
 
-      whyItMatters:
-        "Supports human oversight.",
+      whyItMatters: "Supports human oversight.",
 
-      examples: [
-        "Document review",
-        "Prediction validation"
-      ],
+      examples: ["Document review", "Prediction validation"],
 
-      awsTip:
-        "Human review = A2I."
+      awsTip: "Human review = A2I."
     },
 
     {
       title: "Amazon Forecast",
 
-      definition:
-        "Time-series forecasting service.",
+      definition: "Time-series forecasting service.",
 
-      whyItMatters:
-        "Used for business forecasting.",
+      whyItMatters: "Used for business forecasting.",
 
-      examples: [
-        "Demand forecasting",
-        "Revenue forecasting"
-      ],
+      examples: ["Demand forecasting", "Revenue forecasting"],
 
-      awsTip:
-        "Forecasting = Forecast."
+      awsTip: "Forecasting = Forecast."
     },
 
     {
       title: "Amazon SageMaker",
 
-      definition:
-        "Platform for building, training, and deploying ML models.",
+      definition: "Platform for building, training, and deploying ML models.",
 
-      whyItMatters:
-        "Core AWS machine learning platform.",
+      whyItMatters: "Core AWS machine learning platform.",
 
-      examples: [
-        "Fraud detection",
-        "Prediction models"
-      ],
+      examples: ["Fraud detection", "Prediction models"],
 
-      awsTip:
-        "Traditional ML = SageMaker."
+      awsTip: "Traditional ML = SageMaker."
     },
 
     {
       title: "SageMaker JumpStart",
 
-      definition:
-        "Provides pretrained models and solution templates.",
+      definition: "Provides pretrained models and solution templates.",
 
-      whyItMatters:
-        "Accelerates ML development.",
+      whyItMatters: "Accelerates ML development.",
 
-      examples: [
-        "Foundation models",
-        "Starter solutions"
-      ],
+      examples: ["Foundation models", "Starter solutions"],
 
-      awsTip:
-        "JumpStart accelerates model deployment."
+      awsTip: "JumpStart accelerates model deployment."
     },
 
     {
       title: "Amazon Bedrock",
 
-      definition:
-        "Managed Foundation Model platform.",
+      definition: "Managed Foundation Model platform.",
 
-      whyItMatters:
-        "Core AWS Generative AI service.",
+      whyItMatters: "Core AWS Generative AI service.",
 
-      examples: [
-        "Claude",
-        "Titan",
-        "Llama"
-      ],
+      examples: ["Claude", "Titan", "Llama"],
 
-      awsTip:
-        "Generative AI = Bedrock."
+      awsTip: "Generative AI = Bedrock."
     },
 
     {
       title: "Amazon Q",
 
-      definition:
-        "Generative AI assistant for business and developers.",
+      definition: "Generative AI assistant for business and developers.",
 
-      whyItMatters:
-        "Frequently mentioned in modern AWS AI workflows.",
+      whyItMatters: "Frequently mentioned in modern AWS AI workflows.",
 
-      examples: [
-        "Developer assistance",
-        "Business assistance"
-      ],
+      examples: ["Developer assistance", "Business assistance"],
 
-      awsTip:
-        "AI assistant = Amazon Q."
+      awsTip: "AI assistant = Amazon Q."
     },
 
     {
@@ -318,16 +218,11 @@ export const day8 = {
       definition:
         "Search and analytics service with vector search capabilities.",
 
-      whyItMatters:
-        "Commonly used with RAG.",
+      whyItMatters: "Commonly used with RAG.",
 
-      examples: [
-        "Semantic search",
-        "Vector retrieval"
-      ],
+      examples: ["Semantic search", "Vector retrieval"],
 
-      awsTip:
-        "Vector search = OpenSearch."
+      awsTip: "Vector search = OpenSearch."
     },
 
     {
@@ -336,33 +231,23 @@ export const day8 = {
       definition:
         "Data security service that identifies sensitive information.",
 
-      whyItMatters:
-        "Frequently appears in governance and security questions.",
+      whyItMatters: "Frequently appears in governance and security questions.",
 
-      examples: [
-        "PII discovery",
-        "Sensitive data monitoring"
-      ],
+      examples: ["PII discovery", "Sensitive data monitoring"],
 
-      awsTip:
-        "Sensitive data discovery = Macie."
+      awsTip: "Sensitive data discovery = Macie."
     },
 
     {
       title: "AWS DeepRacer",
 
-      definition:
-        "Reinforcement learning educational platform.",
+      definition: "Reinforcement learning educational platform.",
 
-      whyItMatters:
-        "Often referenced when discussing reinforcement learning.",
+      whyItMatters: "Often referenced when discussing reinforcement learning.",
 
-      examples: [
-        "Autonomous racing"
-      ],
+      examples: ["Autonomous racing"],
 
-      awsTip:
-        "DeepRacer = Reinforcement Learning."
+      awsTip: "DeepRacer = Reinforcement Learning."
     },
 
     {
@@ -371,305 +256,194 @@ export const day8 = {
       definition:
         "Bedrock focuses on Generative AI while SageMaker focuses on ML development.",
 
-      whyItMatters:
-        "One of the most common AWS exam comparisons.",
+      whyItMatters: "One of the most common AWS exam comparisons.",
 
-      examples: [
-        "Claude → Bedrock",
-        "Custom ML Model → SageMaker"
-      ],
+      examples: ["Claude → Bedrock", "Custom ML Model → SageMaker"],
 
-      awsTip:
-        "GenAI = Bedrock. ML = SageMaker."
+      awsTip: "GenAI = Bedrock. ML = SageMaker."
     }
-
   ],
 
   flashcards: [
-
     {
       q: "OCR documents",
       a: "Amazon Textract",
-      explanation:
-        "Extracts text from documents.",
-      example:
-        "Invoices.",
-      examTip:
-        "OCR = Textract."
+      explanation: "Extracts text from documents.",
+      example: "Invoices.",
+      examTip: "OCR = Textract."
     },
 
     {
       q: "Sentiment analysis",
       a: "Amazon Comprehend",
-      explanation:
-        "Analyzes text meaning.",
-      example:
-        "Customer reviews.",
-      examTip:
-        "Text = Comprehend."
+      explanation: "Analyzes text meaning.",
+      example: "Customer reviews.",
+      examTip: "Text = Comprehend."
     },
 
     {
       q: "Image analysis",
       a: "Amazon Rekognition",
-      explanation:
-        "Analyzes images and videos.",
-      example:
-        "Object detection.",
-      examTip:
-        "Images = Rekognition."
+      explanation: "Analyzes images and videos.",
+      example: "Object detection.",
+      examTip: "Images = Rekognition."
     },
 
     {
       q: "Recommendation engine",
       a: "Amazon Personalize",
-      explanation:
-        "Creates personalized recommendations.",
-      example:
-        "E-commerce products.",
-      examTip:
-        "Recommendations = Personalize."
+      explanation: "Creates personalized recommendations.",
+      example: "E-commerce products.",
+      examTip: "Recommendations = Personalize."
     },
 
     {
       q: "Enterprise search",
       a: "Amazon Kendra",
-      explanation:
-        "Searches organizational knowledge.",
-      example:
-        "Company documentation.",
-      examTip:
-        "Enterprise search = Kendra."
+      explanation: "Searches organizational knowledge.",
+      example: "Company documentation.",
+      examTip: "Enterprise search = Kendra."
     },
 
     {
       q: "Human review workflow",
       a: "Amazon A2I",
-      explanation:
-        "Humans validate predictions.",
-      example:
-        "Document review.",
-      examTip:
-        "Human review = A2I."
+      explanation: "Humans validate predictions.",
+      example: "Document review.",
+      examTip: "Human review = A2I."
     },
 
     {
       q: "Sensitive data discovery",
       a: "Amazon Macie",
-      explanation:
-        "Detects sensitive information.",
-      example:
-        "PII scanning.",
-      examTip:
-        "Sensitive data = Macie."
+      explanation: "Detects sensitive information.",
+      example: "PII scanning.",
+      examTip: "Sensitive data = Macie."
     },
 
     {
       q: "GenAI platform",
       a: "Amazon Bedrock",
-      explanation:
-        "Managed Foundation Models.",
-      example:
-        "Claude.",
-      examTip:
-        "GenAI = Bedrock."
+      explanation: "Managed Foundation Models.",
+      example: "Claude.",
+      examTip: "GenAI = Bedrock."
     }
-
   ],
 
   checks: [
-
     {
-      q:
-        "Which service extracts text from scanned documents?",
+      q: "Which service extracts text from scanned documents?",
 
-      options: [
-        "Textract",
-        "Comprehend",
-        "Lex",
-        "Polly"
-      ],
+      options: ["Textract", "Comprehend", "Lex", "Polly"],
 
       answer: 0,
 
-      explanation:
-        "Textract performs OCR."
+      explanation: "Textract performs OCR."
     },
 
     {
-      q:
-        "Which service provides enterprise document search?",
+      q: "Which service provides enterprise document search?",
 
-      options: [
-        "Kendra",
-        "Lex",
-        "Polly",
-        "Translate"
-      ],
+      options: ["Kendra", "Lex", "Polly", "Translate"],
 
       answer: 0,
 
-      explanation:
-        "Kendra provides enterprise search."
+      explanation: "Kendra provides enterprise search."
     },
 
     {
-      q:
-        "Which service identifies sensitive data such as PII?",
+      q: "Which service identifies sensitive data such as PII?",
 
-      options: [
-        "Macie",
-        "Textract",
-        "Translate",
-        "Polly"
-      ],
+      options: ["Macie", "Textract", "Translate", "Polly"],
 
       answer: 0,
 
-      explanation:
-        "Macie discovers sensitive information."
+      explanation: "Macie discovers sensitive information."
     },
 
     {
-      q:
-        "Which service supports recommendation systems?",
+      q: "Which service supports recommendation systems?",
 
-      options: [
-        "Personalize",
-        "Comprehend",
-        "Lex",
-        "Translate"
-      ],
+      options: ["Personalize", "Comprehend", "Lex", "Translate"],
 
       answer: 0,
 
-      explanation:
-        "Personalize builds recommendation engines."
+      explanation: "Personalize builds recommendation engines."
     },
 
     {
-      q:
-        "Which AWS service is primarily associated with Generative AI?",
+      q: "Which AWS service is primarily associated with Generative AI?",
 
-      options: [
-        "Bedrock",
-        "Textract",
-        "Forecast",
-        "Lex"
-      ],
+      options: ["Bedrock", "Textract", "Forecast", "Lex"],
 
       answer: 0,
 
-      explanation:
-        "Bedrock is AWS's GenAI platform."
+      explanation: "Bedrock is AWS's GenAI platform."
     },
 
     {
-      q:
-        "Which service supports human review of ML predictions?",
+      q: "Which service supports human review of ML predictions?",
 
-      options: [
-        "A2I",
-        "Kendra",
-        "Macie",
-        "Forecast"
-      ],
+      options: ["A2I", "Kendra", "Macie", "Forecast"],
 
       answer: 0,
 
-      explanation:
-        "A2I provides human review workflows."
+      explanation: "A2I provides human review workflows."
     }
-
   ],
 
   scenarios: [
-
     {
-      scenario:
-        "A company wants to extract structured data from invoices.",
+      scenario: "A company wants to extract structured data from invoices.",
 
-      options: [
-        "Textract",
-        "Comprehend",
-        "Lex",
-        "Translate"
-      ],
+      options: ["Textract", "Comprehend", "Lex", "Translate"],
 
       answer: 0,
 
-      explanation:
-        "Textract extracts text, forms, and tables."
+      explanation: "Textract extracts text, forms, and tables."
     },
 
     {
-      scenario:
-        "A retailer wants Netflix-style recommendations.",
+      scenario: "A retailer wants Netflix-style recommendations.",
 
-      options: [
-        "Personalize",
-        "Rekognition",
-        "Translate",
-        "Polly"
-      ],
+      options: ["Personalize", "Rekognition", "Translate", "Polly"],
 
       answer: 0,
 
-      explanation:
-        "Personalize provides recommendation engines."
+      explanation: "Personalize provides recommendation engines."
     },
 
     {
       scenario:
         "A company wants employees to search millions of internal documents.",
 
-      options: [
-        "Kendra",
-        "Polly",
-        "Lex",
-        "Translate"
-      ],
+      options: ["Kendra", "Polly", "Lex", "Translate"],
 
       answer: 0,
 
-      explanation:
-        "Kendra provides enterprise search."
+      explanation: "Kendra provides enterprise search."
     },
 
     {
       scenario:
         "A company wants humans to validate AI predictions before final decisions.",
 
-      options: [
-        "A2I",
-        "Forecast",
-        "Comprehend",
-        "Polly"
-      ],
+      options: ["A2I", "Forecast", "Comprehend", "Polly"],
 
       answer: 0,
 
-      explanation:
-        "A2I enables human review workflows."
+      explanation: "A2I enables human review workflows."
     },
 
     {
       scenario:
         "A company wants to build a Generative AI application using Claude.",
 
-      options: [
-        "Bedrock",
-        "Textract",
-        "Macie",
-        "Forecast"
-      ],
+      options: ["Bedrock", "Textract", "Macie", "Forecast"],
 
       answer: 0,
 
-      explanation:
-        "Bedrock provides access to Foundation Models."
+      explanation: "Bedrock provides access to Foundation Models."
     }
-
   ]
-
 };

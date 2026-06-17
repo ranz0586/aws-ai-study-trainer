@@ -14,8 +14,7 @@ export const examQuestions = [
 
     answer: 0,
 
-    explanation:
-      "Labeled data indicates supervised learning."
+    explanation: "Labeled data indicates supervised learning."
   },
 
   {
@@ -24,92 +23,58 @@ export const examQuestions = [
     question:
       "A model performs perfectly in training but poorly in production.",
 
-    options: [
-      "Underfitting",
-      "Overfitting",
-      "Embedding",
-      "Tokenization"
-    ],
+    options: ["Underfitting", "Overfitting", "Embedding", "Tokenization"],
 
     answer: 1,
 
-    explanation:
-      "The model memorized training data."
+    explanation: "The model memorized training data."
   },
 
   {
     domain: "Generative AI",
 
-    question:
-      "What controls output randomness?",
+    question: "What controls output randomness?",
 
-    options: [
-      "Context Window",
-      "Temperature",
-      "Embedding",
-      "Recall"
-    ],
+    options: ["Context Window", "Temperature", "Embedding", "Recall"],
 
     answer: 1,
 
-    explanation:
-      "Temperature controls creativity."
+    explanation: "Temperature controls creativity."
   },
 
   {
     domain: "RAG",
 
-    question:
-      "Company policies change daily. Which approach is best?",
+    question: "Company policies change daily. Which approach is best?",
 
-    options: [
-      "Fine Tuning",
-      "RAG",
-      "Training from Scratch",
-      "Classification"
-    ],
+    options: ["Fine Tuning", "RAG", "Training from Scratch", "Classification"],
 
     answer: 1,
 
-    explanation:
-      "RAG retrieves current information."
+    explanation: "RAG retrieves current information."
   },
 
   {
     domain: "AWS Services",
 
-    question:
-      "Which AWS service extracts text from invoices?",
+    question: "Which AWS service extracts text from invoices?",
 
-    options: [
-      "Textract",
-      "Lex",
-      "Polly",
-      "Translate"
-    ],
+    options: ["Textract", "Lex", "Polly", "Translate"],
 
     answer: 0,
 
-    explanation:
-      "Textract performs OCR."
+    explanation: "Textract performs OCR."
   },
 
   {
     domain: "Security",
 
-    question:
-      "Which AWS service records API activity?",
+    question: "Which AWS service records API activity?",
 
-    options: [
-      "IAM",
-      "KMS",
-      "CloudTrail",
-      "Lex"
-    ],
+    options: ["IAM", "KMS", "CloudTrail", "Lex"],
 
     answer: 2,
 
-    explanation:
-      "CloudTrail stores audit logs."
+    explanation: "CloudTrail stores audit logs."
   }
 ];

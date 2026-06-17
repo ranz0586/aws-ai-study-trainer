@@ -1,6 +1,4 @@
-export default function LessonCard({
-  lesson
-}) {
+export default function LessonCard({ lesson }) {
   return (
     <div
       style={{
@@ -12,8 +10,7 @@ export default function LessonCard({
       <h3>{lesson.title}</h3>
 
       <p>
-        <strong>Definition:</strong>{" "}
-        {lesson.definition}
+        <strong>Definition:</strong> {lesson.definition}
       </p>
 
       <ul>
@@ -23,8 +20,7 @@ export default function LessonCard({
       </ul>
 
       <p>
-        <strong>AWS Tip:</strong>{" "}
-        {lesson.awsTip}
+        <strong>AWS Tip:</strong> {lesson.awsTip}
       </p>
     </div>
   );

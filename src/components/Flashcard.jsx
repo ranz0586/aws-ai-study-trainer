@@ -1,44 +1,20 @@
 import { useState } from "react";
 
-export default function Flashcard({
-  card
-}) {
-
-  const [revealed, setRevealed] =
-    useState(false);
+export default function Flashcard({ card }) {
+  const [revealed, setRevealed] = useState(false);
 
   return (
-    <div
-      className="flashcard"
-      onClick={() =>
-        setRevealed(
-          !revealed
-        )
-      }
-    >
-
+    <div className="flashcard" onClick={() => setRevealed(!revealed)}>
       {!revealed ? (
-
         <div>
+          <small className="flashcard-label">Question</small>
 
-          <small className="flashcard-label">
-            Question
-          </small>
+          <h3>{card.q}</h3>
 
-          <h3>
-            {card.q}
-          </h3>
-
-          <p className="flashcard-hint">
-            Click to reveal answer
-          </p>
-
+          <p className="flashcard-hint">Click to reveal answer</p>
         </div>
-
       ) : (
-
         <div>
-
           <small
             className="
               flashcard-label
@@ -48,51 +24,33 @@ export default function Flashcard({
             Answer
           </small>
 
-          <h3>
-            {card.a}
-          </h3>
+          <h3>{card.a}</h3>
 
           {card.explanation && (
             <>
-              <strong>
-                Explanation
-              </strong>
+              <strong>Explanation</strong>
 
-              <p>
-                {card.explanation}
-              </p>
+              <p>{card.explanation}</p>
             </>
           )}
 
           {card.example && (
             <>
-              <strong>
-                Example
-              </strong>
+              <strong>Example</strong>
 
-              <p>
-                {card.example}
-              </p>
+              <p>{card.example}</p>
             </>
           )}
 
           {card.examTip && (
             <>
-              <strong>
-                Exam Tip
-              </strong>
+              <strong>Exam Tip</strong>
 
-              <p>
-                {card.examTip}
-              </p>
+              <p>{card.examTip}</p>
             </>
           )}
-
         </div>
-
       )}
-
     </div>
   );
-
 }

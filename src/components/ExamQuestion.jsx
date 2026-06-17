@@ -23,48 +23,34 @@ export default function ExamQuestion({
         Question {questionNumber}
       </div>
 
-      <h3>
-        {question.question}
-      </h3>
+      <h3>{question.question}</h3>
 
-      {question.options.map(
-        (
-          option,
-          index
-        ) => (
-          <button
-            key={index}
-            onClick={() =>
-              onSelect(index)
-            }
-            style={{
-              display: "block",
-              width: "100%",
-              textAlign: "left",
-              marginBottom: 10,
-              padding: 14,
+      {question.options.map((option, index) => (
+        <button
+          key={index}
+          onClick={() => onSelect(index)}
+          style={{
+            display: "block",
+            width: "100%",
+            textAlign: "left",
+            marginBottom: 10,
+            padding: 14,
 
-              background:
-                selectedAnswer ===
-                index
-                  ? "#dbeafe"
-                  : "#ffffff",
+            background: selectedAnswer === index ? "#dbeafe" : "#ffffff",
 
-              border:
-                selectedAnswer ===
-                index
-                  ? "2px solid #2563eb"
-                  : "1px solid #d1d5db",
+            border:
+              selectedAnswer === index
+                ? "2px solid #2563eb"
+                : "1px solid #d1d5db",
 
-              borderRadius: 8,
+            borderRadius: 8,
 
-              color: "#111827"
-            }}
-          >
-            {option}
-          </button>
-        )
-      )}
+            color: "#111827"
+          }}
+        >
+          {option}
+        </button>
+      ))}
     </div>
   );
 }

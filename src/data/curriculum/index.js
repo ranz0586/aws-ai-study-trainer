@@ -9,7 +9,6 @@ import { day8 } from "./day8";
 import { day9 } from "./day9";
 import { day10_5 } from "./day10_5";
 
-
 export const curriculum = {
   1: day1,
   2: day2,

@@ -13,7 +13,6 @@ import { responsibleAI } from "./responsibleAI";
 import { security } from "./security";
 
 export const questionBank = [
-
   ...aiFundamentals,
 
   ...mlLifecycle,
@@ -33,5 +32,4 @@ export const questionBank = [
   ...responsibleAI,
 
   ...security
-
 ];

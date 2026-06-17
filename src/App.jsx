@@ -1,367 +1,181 @@
 import { useState } from "react";
 
-import Dashboard
-from "./pages/Dashboard";
+import Dashboard from "./pages/Dashboard";
 
-import DayView
-from "./pages/DayView";
+import DayView from "./pages/DayView";
 
-import ExamSimulator
-from "./pages/ExamSimulator";
+import ExamSimulator from "./pages/ExamSimulator";
 
-import ResultsPage
-from "./pages/ResultsPage";
+import ResultsPage from "./pages/ResultsPage";
 
-import WeakTopicReview
-from "./pages/WeakTopicReview";
+import WeakTopicReview from "./pages/WeakTopicReview";
 
-import ExamHistoryPage
-from "./pages/ExamHistoryPage";
+import ExamHistoryPage from "./pages/ExamHistoryPage";
 
-import ExamAnalyticsPage
-from "./pages/ExamAnalyticsPage";
+import ExamAnalyticsPage from "./pages/ExamAnalyticsPage";
 
-import RetakeMissedQuestions
-from "./pages/RetakeMissedQuestions";
+import RetakeMissedQuestions from "./pages/RetakeMissedQuestions";
 
-import RetakeSummary
-from "./components/RetakeSummary";
+import RetakeSummary from "./components/RetakeSummary";
 
-import ErrorBoundary
-from "./components/ErrorBoundary";
+import ErrorBoundary from "./components/ErrorBoundary";
 
-import useProgress
-from "./hooks/useProgress";
+import useProgress from "./hooks/useProgress";
 
-import useTheme
-from "./hooks/useTheme";
+import useTheme from "./hooks/useTheme";
 
 export default function App() {
+  const { progress, recordScore } = useProgress();
 
-  const {
-    progress,
-    recordScore
-  } = useProgress();
+  const { theme, toggleTheme } = useTheme();
 
-  const {
-    theme,
-    toggleTheme
-  } = useTheme();
+  const [page, setPage] = useState("dashboard");
 
-  const [
-    page,
-    setPage
-  ] =
-    useState(
-      "dashboard"
-    );
+  const [selectedDay, setSelectedDay] = useState(null);
 
-  const [
-    selectedDay,
-    setSelectedDay
-  ] =
-    useState(null);
+  const [examResults, setExamResults] = useState(null);
 
-  const [
-    examResults,
-    setExamResults
-  ] =
-    useState(null);
+  const [retakeQuestions, setRetakeQuestions] = useState([]);
 
-  const [
-    retakeQuestions,
-    setRetakeQuestions
-  ] =
-    useState([]);
-
-  const [
-    retakeResults,
-    setRetakeResults
-  ] =
-    useState(null);
+  const [retakeResults, setRetakeResults] = useState(null);
 
   return (
     <ErrorBoundary>
-
       <div>
-
         <div
           style={{
             padding: 16,
 
-            display:
-              "flex",
+            display: "flex",
 
-            justifyContent:
-              "space-between",
+            justifyContent: "space-between",
 
-            alignItems:
-              "center",
+            alignItems: "center",
 
-            borderBottom:
-              "1px solid var(--border)",
+            borderBottom: "1px solid var(--border)",
 
-            marginBottom:
-              16
+            marginBottom: 16
           }}
         >
-
           <div>
-
             <button
               className="secondary-btn"
-              onClick={() =>
-                setPage(
-                  "dashboard"
-                )
-              }
+              onClick={() => setPage("dashboard")}
             >
               Dashboard
             </button>
-
           </div>
 
           <div
             style={{
-              display:
-                "flex",
+              display: "flex",
 
               gap: 8
             }}
           >
-
             <button
               className="secondary-btn"
-              onClick={() =>
-                setPage(
-                  "history"
-                )
-              }
+              onClick={() => setPage("history")}
             >
               History
             </button>
 
             <button
               className="secondary-btn"
-              onClick={() =>
-                setPage(
-                  "analytics"
-                )
-              }
+              onClick={() => setPage("analytics")}
             >
               Analytics
             </button>
 
-            <button
-              className="secondary-btn"
-              onClick={
-                toggleTheme
-              }
-            >
-              {theme ===
-              "light"
-                ? "🌙 Dark"
-                : "☀️ Light"}
+            <button className="secondary-btn" onClick={toggleTheme}>
+              {theme === "light" ? "🌙 Dark" : "☀️ Light"}
             </button>
-
           </div>
-
         </div>
 
-        {page ===
-          "dashboard" && (
+        {page === "dashboard" && (
           <Dashboard
-            progress={
-              progress
-            }
-            openDay={(
-              day
-            ) => {
-
-              if (
-                day === 10
-              ) {
-
-                setPage(
-                  "exam"
-                );
+            progress={progress}
+            openDay={(day) => {
+              if (day === 10) {
+                setPage("exam");
 
                 return;
-
               }
 
-              setSelectedDay(
-                day
-              );
+              setSelectedDay(day);
 
-              setPage(
-                "day"
-              );
-
+              setPage("day");
             }}
           />
         )}
 
-        {page ===
-          "day" && (
+        {page === "day" && (
           <DayView
-            day={
-              selectedDay
-            }
-            recordScore={
-              recordScore
-            }
-            goBack={() =>
-              setPage(
-                "dashboard"
-              )
-            }
+            day={selectedDay}
+            recordScore={recordScore}
+            goBack={() => setPage("dashboard")}
           />
         )}
 
-        {page ===
-          "exam" && (
+        {page === "exam" && (
           <ExamSimulator
-            startResults={
-              (
-                results
-              ) => {
+            startResults={(results) => {
+              setExamResults(results);
 
-                setExamResults(
-                  results
-                );
-
-                setPage(
-                  "results"
-                );
-
-              }
-            }
+              setPage("results");
+            }}
           />
         )}
 
-        {page ===
-          "results" &&
-          examResults && (
-            <ResultsPage
-              results={
-                examResults
-              }
-              reviewWeakTopics={() =>
-                setPage(
-                  "review"
-                )
-              }
-              backDashboard={() =>
-                setPage(
-                  "dashboard"
-                )
-              }
-              startRetake={(
-                questions
-              ) => {
+        {page === "results" && examResults && (
+          <ResultsPage
+            results={examResults}
+            reviewWeakTopics={() => setPage("review")}
+            backDashboard={() => setPage("dashboard")}
+            startRetake={(questions) => {
+              setRetakeQuestions(questions);
 
-                setRetakeQuestions(
-                  questions
-                );
+              setPage("retake");
+            }}
+          />
+        )}
 
-                setPage(
-                  "retake"
-                );
+        {page === "review" && examResults && (
+          <WeakTopicReview
+            results={examResults}
+            backResults={() => setPage("results")}
+          />
+        )}
 
-              }}
-            />
-          )}
-
-        {page ===
-          "review" &&
-          examResults && (
-            <WeakTopicReview
-              results={
-                examResults
-              }
-              backResults={() =>
-                setPage(
-                  "results"
-                )
-              }
-            />
-          )}
-
-        {page ===
-          "retake" && (
-
+        {page === "retake" && (
           <RetakeMissedQuestions
-            questions={
-              retakeQuestions
-            }
-            finishRetake={
-              (
-                results
-              ) => {
+            questions={retakeQuestions}
+            finishRetake={(results) => {
+              setRetakeResults(results);
 
-                setRetakeResults(
-                  results
-                );
-
-                setPage(
-                  "retakeSummary"
-                );
-
-              }
-            }
+              setPage("retakeSummary");
+            }}
           />
-
         )}
 
-        {page ===
-          "retakeSummary" &&
-          retakeResults && (
-
+        {page === "retakeSummary" && retakeResults && (
           <RetakeSummary
-            score={
-              retakeResults.score
-            }
-            correct={
-              retakeResults.correct
-            }
-            total={
-              retakeResults.total
-            }
-            backResults={() =>
-              setPage(
-                "results"
-              )
-            }
-          />
-
-        )}
-
-        {page ===
-          "history" && (
-          <ExamHistoryPage
-            goBack={() =>
-              setPage(
-                "dashboard"
-              )
-            }
+            score={retakeResults.score}
+            correct={retakeResults.correct}
+            total={retakeResults.total}
+            backResults={() => setPage("results")}
           />
         )}
 
-        {page ===
-          "analytics" && (
-          <ExamAnalyticsPage
-            goBack={() =>
-              setPage(
-                "dashboard"
-              )
-            }
-          />
+        {page === "history" && (
+          <ExamHistoryPage goBack={() => setPage("dashboard")} />
         )}
 
+        {page === "analytics" && (
+          <ExamAnalyticsPage goBack={() => setPage("dashboard")} />
+        )}
       </div>
-
     </ErrorBoundary>
   );
-
 }

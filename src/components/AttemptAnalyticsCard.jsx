@@ -1,22 +1,16 @@
-export default function AttemptAnalyticsCard({
-  title,
-  value
-}) {
+export default function AttemptAnalyticsCard({ title, value }) {
   return (
     <div
       style={{
-        background:
-          "var(--surface)",
+        background: "var(--surface)",
 
-        border:
-          "1px solid var(--border)",
+        border: "1px solid var(--border)",
 
         borderRadius: 12,
 
         padding: 20,
 
-        textAlign:
-          "center"
+        textAlign: "center"
       }}
     >
       <h3>{title}</h3>

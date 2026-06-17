@@ -1,118 +1,55 @@
-import {
-  useEffect,
-  useState,
-  useCallback,
-  useMemo
-} from "react";
+import { useEffect, useState, useCallback, useMemo } from "react";
 
-const STORAGE_KEY =
-  "aws-aif-exam-history";
+const STORAGE_KEY = "aws-aif-exam-history";
 
 export default function useExamHistory() {
+  const [history, setHistory] = useState(() => {
+    const saved = localStorage.getItem(STORAGE_KEY);
 
-  const [history, setHistory] =
-    useState(() => {
-
-      const saved =
-        localStorage.getItem(
-          STORAGE_KEY
-        );
-
-      return saved
-        ? JSON.parse(saved)
-        : [];
-
-    });
+    return saved ? JSON.parse(saved) : [];
+  });
 
   useEffect(() => {
-
-    localStorage.setItem(
-      STORAGE_KEY,
-      JSON.stringify(history)
-    );
-
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(history));
   }, [history]);
 
-  const addAttempt =
-    useCallback(
-      (result) => {
+  const addAttempt = useCallback((result) => {
+    const attempt = {
+      id: crypto.randomUUID(),
 
-        const attempt = {
+      date: new Date().toLocaleString(),
 
-          id:
-            crypto.randomUUID(),
+      ...result
+    };
 
-          date:
-            new Date().toLocaleString(),
+    setHistory((prev) => [attempt, ...prev]);
+  }, []);
 
-          ...result
+  const clearHistory = useCallback(() => {
+    localStorage.removeItem(STORAGE_KEY);
 
-        };
+    setHistory([]);
+  }, []);
 
-        setHistory(prev => [
+  const bestScore = useMemo(() => {
+    if (history.length === 0) {
+      return 0;
+    }
 
-          attempt,
+    return Math.max(...history.map((attempt) => attempt.score));
+  }, [history]);
 
-          ...prev
+  const latestScore = useMemo(() => {
+    if (history.length === 0) {
+      return 0;
+    }
 
-        ]);
+    return history[0]?.score || 0;
+  }, [history]);
 
-      },
-      []
-    );
-
-  const clearHistory =
-    useCallback(() => {
-
-      localStorage.removeItem(
-        STORAGE_KEY
-      );
-
-      setHistory([]);
-
-    }, []);
-
-  const bestScore =
-    useMemo(() => {
-
-      if (
-        history.length === 0
-      ) {
-        return 0;
-      }
-
-      return Math.max(
-        ...history.map(
-          attempt =>
-            attempt.score
-        )
-      );
-
-    }, [history]);
-
-  const latestScore =
-    useMemo(() => {
-
-      if (
-        history.length === 0
-      ) {
-        return 0;
-      }
-
-      return history[0]
-        ?.score || 0;
-
-    }, [history]);
-
-  const totalAttempts =
-    useMemo(
-      () =>
-        history.length,
-      [history]
-    );
+  const totalAttempts = useMemo(() => history.length, [history]);
 
   return {
-
     history,
 
     addAttempt,
@@ -124,7 +61,5 @@ export default function useExamHistory() {
     latestScore,
 
     totalAttempts
-
   };
-
 }

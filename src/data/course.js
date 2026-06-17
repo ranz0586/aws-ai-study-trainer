@@ -1,71 +1,58 @@
 export const COURSE = [
   {
     day: 1,
-    title:
-      "AI & ML Foundations",
+    title: "AI & ML Foundations",
     phase: "Learn"
   },
   {
     day: 2,
-    title:
-      "ML Lifecycle",
+    title: "ML Lifecycle",
     phase: "Learn"
   },
   {
     day: 3,
-    title:
-      "Generative AI Foundations",
+    title: "Generative AI Foundations",
     phase: "Learn"
   },
   {
     day: 4,
-    title:
-      "Embeddings & Vector Search",
+    title: "Embeddings & Vector Search",
     phase: "Learn"
   },
   {
     day: 5,
-    title:
-      "Prompt Engineering",
+    title: "Prompt Engineering",
     phase: "Learn"
   },
   {
     day: 6,
-    title:
-      "RAG, Fine-Tuning & Agents",
+    title: "RAG, Fine-Tuning & Agents",
     phase: "Learn"
   },
   {
     day: 7,
-    title:
-      "Amazon Bedrock",
+    title: "Amazon Bedrock",
     phase: "Learn"
   },
   {
     day: 8,
-    title:
-      "AWS AI Services",
+    title: "AWS AI Services",
     phase: "Reinforce"
   },
   {
     day: 9,
-    title:
-      "Responsible AI",
+    title: "Responsible AI",
     phase: "Reinforce"
   },
   {
     day: 10,
-    title:
-      "Exam Simulation",
+    title: "Exam Simulation",
     phase: "Exam"
   },
   {
     day: 10.5,
-    title:
-      "AWS Foundations For AI",
-    phase:
-      "Bonus",
-    estimatedTime:
-      "60 min"
+    title: "AWS Foundations For AI",
+    phase: "Bonus",
+    estimatedTime: "60 min"
   }
 ];

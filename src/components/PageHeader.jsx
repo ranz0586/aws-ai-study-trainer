@@ -1,18 +1,9 @@
-export default function PageHeader({
-  title,
-  subtitle
-}) {
+export default function PageHeader({ title, subtitle }) {
   return (
     <>
-      <h1 className="page-title">
-        {title}
-      </h1>
+      <h1 className="page-title">{title}</h1>
 
-      {subtitle && (
-        <p className="page-subtitle">
-          {subtitle}
-        </p>
-      )}
+      {subtitle && <p className="page-subtitle">{subtitle}</p>}
     </>
   );
 }

@@ -1,6 +1,4 @@
-export default function ProgressBar({
-  value
-}) {
+export default function ProgressBar({ value }) {
   return (
     <div
       style={{
@@ -20,13 +18,9 @@ export default function ProgressBar({
 
           height: "100%",
 
-          background:
-            value >= 70
-              ? "#16a34a"
-              : "#2563eb",
+          background: value >= 70 ? "#16a34a" : "#2563eb",
 
-          transition:
-            "0.3s ease"
+          transition: "0.3s ease"
         }}
       />
     </div>
