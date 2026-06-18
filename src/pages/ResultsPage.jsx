@@ -14,7 +14,8 @@ export default function ResultsPage({
   results,
   reviewWeakTopics,
   backDashboard,
-  startRetake
+  startRetake,
+  startAdaptiveExam
 }) {
   const { addAttempt } = useExamHistory();
 
@@ -135,6 +136,15 @@ export default function ResultsPage({
         <button className="primary-btn" onClick={reviewWeakTopics}>
           Review Weak Topics
         </button>
+
+        {remediation.recommendations.length > 0 && (
+          <button
+            className="primary-btn"
+            onClick={() => startAdaptiveExam(domainScores)}
+          >
+            Start Adaptive Exam
+          </button>
+        )}
 
         <button className="secondary-btn" onClick={backDashboard}>
           Dashboard

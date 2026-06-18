@@ -20,7 +20,12 @@ import useAdaptiveExam from "../hooks/useAdaptiveExam";
 
 import { calculateReadiness } from "../utils/readinessPredictor";
 
-export default function Dashboard({ progress, openDay, startAdaptiveExam }) {
+export default function Dashboard({
+  progress,
+  openDay,
+  startAdaptiveExam,
+  openDumpExam
+}) {
   const { history, bestScore, latestScore } = useExamHistory();
 
   const { weakDomains, hasHistory } = useAdaptiveExam();
@@ -84,6 +89,19 @@ export default function Dashboard({ progress, openDay, startAdaptiveExam }) {
         <TrendCard title="Latest Score" value={`${latestScore}%`} />
 
         <TrendCard title="Attempts" value={history.length} />
+      </div>
+
+      <div className="card" style={{ marginBottom: 20 }}>
+        <h3 style={{ marginBottom: 4 }}>Practice Exam (AIF Dump)</h3>
+
+        <p style={{ color: "#6b7280", marginBottom: 12 }}>
+          65 questions drawn from the full AIF question bank with single and
+          multi-select support.
+        </p>
+
+        <button className="primary-btn" onClick={openDumpExam}>
+          Start Practice Exam
+        </button>
       </div>
 
       <div className="responsive-grid">

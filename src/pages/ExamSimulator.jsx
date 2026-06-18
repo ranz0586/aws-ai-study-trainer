@@ -28,7 +28,7 @@ export default function ExamSimulator({
 
   const [answers, setAnswers] = useState({});
 
-  const [seconds, setSeconds] = useState(3600);
+  const [seconds, setSeconds] = useState(5400);
 
   const submitExam = () => {
     startResults({

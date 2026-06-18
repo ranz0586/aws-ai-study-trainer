@@ -6,7 +6,7 @@ import ReviewQuestion from "../components/ReviewQuestion";
 
 import WeakTopicCard from "../components/WeakTopicCard";
 
-export default function WeakTopicReview({ results, backResults }) {
+export default function WeakTopicReview({ results, backResults, startAdaptiveExam }) {
   const domainScores = calculateDomainScores(
     results.questions,
     results.answers
@@ -57,9 +57,20 @@ export default function WeakTopicReview({ results, backResults }) {
         ))
       )}
 
-      <button className="primary-btn" onClick={backResults}>
-        Back To Results
-      </button>
+      <div className="exam-actions">
+        {weak.length > 0 && (
+          <button
+            className="primary-btn"
+            onClick={() => startAdaptiveExam(domainScores)}
+          >
+            Start Adaptive Exam
+          </button>
+        )}
+
+        <button className="secondary-btn" onClick={backResults}>
+          Back To Results
+        </button>
+      </div>
     </div>
   );
 }

@@ -18,16 +18,28 @@ import RetakeMissedQuestions from "./pages/RetakeMissedQuestions";
 
 import RetakeSummary from "./components/RetakeSummary";
 
+import DumpExamSimulator from "./pages/DumpExamSimulator";
+
+import DumpResultsPage from "./pages/DumpResultsPage";
+
 import ErrorBoundary from "./components/ErrorBoundary";
 
 import useProgress from "./hooks/useProgress";
+
+import useExamHistory from "./hooks/useExamHistory";
 
 import useTheme from "./hooks/useTheme";
 
 export default function App() {
   const { progress, recordScore } = useProgress();
 
+  const { history } = useExamHistory();
+
   const { theme, toggleTheme } = useTheme();
+
+  const [examIsAdaptive, setExamIsAdaptive] = useState(false);
+
+  const [examDomainScores, setExamDomainScores] = useState({});
 
   const [page, setPage] = useState("dashboard");
 
@@ -38,6 +50,8 @@ export default function App() {
   const [retakeQuestions, setRetakeQuestions] = useState([]);
 
   const [retakeResults, setRetakeResults] = useState(null);
+
+  const [dumpResults, setDumpResults] = useState(null);
 
   return (
     <ErrorBoundary>
@@ -75,6 +89,13 @@ export default function App() {
           >
             <button
               className="secondary-btn"
+              onClick={() => setPage("dumpExam")}
+            >
+              Practice Exam
+            </button>
+
+            <button
+              className="secondary-btn"
               onClick={() => setPage("history")}
             >
               History
@@ -96,10 +117,16 @@ export default function App() {
         {page === "dashboard" && (
           <Dashboard
             progress={progress}
+            openDumpExam={() => setPage("dumpExam")}
+            startAdaptiveExam={() => {
+              setExamIsAdaptive(true);
+              setExamDomainScores(history[0]?.domainScores || {});
+              setPage("exam");
+            }}
             openDay={(day) => {
               if (day === 10) {
+                setExamIsAdaptive(false);
                 setPage("exam");
-
                 return;
               }
 
@@ -120,7 +147,13 @@ export default function App() {
 
         {page === "exam" && (
           <ExamSimulator
+            adaptive={examIsAdaptive}
+            domainScores={examDomainScores}
             startResults={(results) => {
+              setExamIsAdaptive(false);
+
+              setExamDomainScores({});
+
               setExamResults(results);
 
               setPage("results");
@@ -138,6 +171,13 @@ export default function App() {
 
               setPage("retake");
             }}
+            startAdaptiveExam={(domainScores) => {
+              setExamIsAdaptive(true);
+
+              setExamDomainScores(domainScores);
+
+              setPage("exam");
+            }}
           />
         )}
 
@@ -145,6 +185,13 @@ export default function App() {
           <WeakTopicReview
             results={examResults}
             backResults={() => setPage("results")}
+            startAdaptiveExam={(domainScores) => {
+              setExamIsAdaptive(true);
+
+              setExamDomainScores(domainScores);
+
+              setPage("exam");
+            }}
           />
         )}
 
@@ -165,6 +212,23 @@ export default function App() {
             correct={retakeResults.correct}
             total={retakeResults.total}
             backResults={() => setPage("results")}
+          />
+        )}
+
+        {page === "dumpExam" && (
+          <DumpExamSimulator
+            startResults={(results) => {
+              setDumpResults(results);
+
+              setPage("dumpResults");
+            }}
+          />
+        )}
+
+        {page === "dumpResults" && dumpResults && (
+          <DumpResultsPage
+            results={dumpResults}
+            backDashboard={() => setPage("dashboard")}
           />
         )}
 
