@@ -140,7 +140,7 @@ export default function DumpExamQuestion({
               borderRadius: 4
             }}
           >
-            Select {requiredCount} answers
+            Select all that apply
           </span>
         )}
 

@@ -41,7 +41,7 @@ export default function ExamSimulator({
   return (
     <div className="app-container">
       <h1>
-        {adaptive ? "Adaptive Practice Exam" : "AWS AI Practitioner Exam"}
+        {adaptive ? "Adaptive Practice Exam" : "AWS AI Practitioner Practice Exam"}
       </h1>
 
       {adaptive && (

@@ -91,19 +91,6 @@ export default function Dashboard({
         <TrendCard title="Attempts" value={history.length} />
       </div>
 
-      <div className="card" style={{ marginBottom: 20 }}>
-        <h3 style={{ marginBottom: 4 }}>Practice Exam (AIF Dump)</h3>
-
-        <p style={{ color: "#6b7280", marginBottom: 12 }}>
-          65 questions drawn from the full AIF question bank with single and
-          multi-select support.
-        </p>
-
-        <button className="primary-btn" onClick={openDumpExam}>
-          Start Practice Exam
-        </button>
-      </div>
-
       <div className="responsive-grid">
         {COURSE.map((day) => (
           <DayCard
@@ -117,6 +104,18 @@ export default function Dashboard({
             onOpen={() => openDay(day.day)}
           />
         ))}
+      </div>
+            <div className="card" style={{  marginTop: 20, marginBottom: 20 }}>
+        <h3 style={{ marginBottom: 4 }}>Practice Exam (AIF Dump)</h3>
+
+        <p style={{ color: "#6b7280", marginBottom: 12 }}>
+          65 questions drawn from the full AIF question bank with single and
+          multi-select support.
+        </p>
+
+        <button className="primary-btn" onClick={openDumpExam}>
+          Start Practice Exam
+        </button>
       </div>
     </div>
   );
