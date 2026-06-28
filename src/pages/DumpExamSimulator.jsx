@@ -6,9 +6,21 @@ import ExamTimer from "../components/ExamTimer";
 import { shuffle } from "../utils/examBuilder";
 
 export default function DumpExamSimulator({ startResults }) {
-  const [questions] = useState(
-    () => shuffle(awsAiQuestions).slice(0, 65)
-  );
+  const [questions] = useState(() => {
+    const shuffled = shuffle(awsAiQuestions);
+    const seen = new Set();
+    const unique = [];
+
+    for (const q of shuffled) {
+      if (!seen.has(q.id)) {
+        seen.add(q.id);
+        unique.push(q);
+        if (unique.length === 65) break;
+      }
+    }
+
+    return unique;
+  });
 
   const [answers, setAnswers] = useState({});
 
