@@ -20,6 +20,8 @@ import RetakeSummary from "./components/RetakeSummary";
 
 import DumpExamSimulator from "./pages/DumpExamSimulator";
 
+import FullDumpExamSimulator from "./pages/FullDumpExamSimulator";
+
 import DumpResultsPage from "./pages/DumpResultsPage";
 
 import ErrorBoundary from "./components/ErrorBoundary";
@@ -52,6 +54,8 @@ export default function App() {
   const [retakeResults, setRetakeResults] = useState(null);
 
   const [dumpResults, setDumpResults] = useState(null);
+
+  const [fullDumpResults, setFullDumpResults] = useState(null);
 
   return (
     <ErrorBoundary>
@@ -91,7 +95,14 @@ export default function App() {
               className="secondary-btn"
               onClick={() => setPage("dumpExam")}
             >
-              Practice Exam
+              Practice Exam (65Q)
+            </button>
+
+            <button
+              className="secondary-btn"
+              onClick={() => setPage("fullDumpExam")}
+            >
+              Full Exam (168Q)
             </button>
 
             <button
@@ -228,6 +239,23 @@ export default function App() {
         {page === "dumpResults" && dumpResults && (
           <DumpResultsPage
             results={dumpResults}
+            backDashboard={() => setPage("dashboard")}
+          />
+        )}
+
+        {page === "fullDumpExam" && (
+          <FullDumpExamSimulator
+            startResults={(results) => {
+              setFullDumpResults(results);
+
+              setPage("fullDumpResults");
+            }}
+          />
+        )}
+
+        {page === "fullDumpResults" && fullDumpResults && (
+          <DumpResultsPage
+            results={fullDumpResults}
             backDashboard={() => setPage("dashboard")}
           />
         )}
